@@ -267,13 +267,20 @@
     .role-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 5px 0;
+      gap: 8px;
+      padding: 6px 0;
       border-bottom: 1.5px dashed #F0EDE8;
     }
     .role-row:last-child { border-bottom: none; }
-    .role-lbl { font-size: 10px; font-weight: 700; color: var(--soft); min-width: 28px; }
-    .role-val { font-size: 12.5px; font-weight: 600; }
+    .role-tag {
+      display: inline-block;
+      font-size: 10.5px; font-weight: 700;
+      padding: 2px 9px; border-radius: 8px;
+      background: #FFF3E0; border: 1.5px solid #FFCC80; color: #E65100;
+      white-space: nowrap; flex-shrink: 0;
+      box-shadow: 1px 2px 0 rgba(230,81,0,.12);
+    }
+    .role-val { font-size: 13px; font-weight: 700; }
 
     /* ── 기도용사 박스 ── */
     .prayer-box {
@@ -420,10 +427,10 @@
         <div class="worship-date">5월 13일 (수)</div>
       </div>
       <div class="worship-card-body">
-        <div class="role-row"><span class="role-lbl">설교</span><span class="role-val">노태규</span></div>
-        <div class="role-row"><span class="role-lbl">찬양</span><span class="role-val">최명환</span></div>
-        <div class="role-row"><span class="role-lbl">음향</span><span class="role-val">윤수신</span></div>
-        <div class="role-row"><span class="role-lbl">PD</span><span class="role-val">박정인</span></div>
+        <div class="role-row"><span class="role-tag">설교</span><span class="role-val">노태규</span></div>
+        <div class="role-row"><span class="role-tag">찬양</span><span class="role-val">최명환</span></div>
+        <div class="role-row"><span class="role-tag">음향</span><span class="role-val">윤수신</span></div>
+        <div class="role-row"><span class="role-tag">PD</span><span class="role-val">박정인</span></div>
       </div>
     </div>
 
@@ -435,9 +442,9 @@
         <div class="worship-date">5월 15일 (금)</div>
       </div>
       <div class="worship-card-body">
-        <div class="role-row"><span class="role-lbl">찬양</span><span class="role-val">윤수신</span></div>
-        <div class="role-row"><span class="role-lbl">PD</span><span class="role-val">정지원</span></div>
-        <div class="role-row"><span class="role-lbl">자막</span><span class="role-val">박정인</span></div>
+        <div class="role-row"><span class="role-tag">찬양</span><span class="role-val">윤수신</span></div>
+        <div class="role-row"><span class="role-tag">PD</span><span class="role-val">정지원</span></div>
+        <div class="role-row"><span class="role-tag">자막</span><span class="role-val">박정인</span></div>
       </div>
       <div class="prayer-box">
         <div class="prayer-title">기도용사</div>

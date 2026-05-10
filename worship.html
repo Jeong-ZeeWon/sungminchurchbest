@@ -14,14 +14,6 @@
       --ink:        #1A0E0A;
       --ink-mid:    #4A2C1C;
       --ink-soft:   #8B6B4B;
-      --rose:       #B8405A;
-      --rose-bg:    #FFF0F3;
-      --gold:       #9B7000;
-      --gold-bg:    #FFF8E0;
-      --lav:        #6B559A;
-      --lav-bg:     #F0EBFF;
-      --sage:       #3D7A55;
-      --sage-bg:    #EAF5EE;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -73,8 +65,6 @@
       color: var(--ink);
     }
 
-    .church-name em { font-style: normal; color: var(--rose); }
-
     .church-sub {
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 10px;
@@ -105,8 +95,6 @@
       color: var(--ink-mid);
     }
 
-    .date-strip .blessing { color: var(--rose); font-weight: 500; }
-
     .content { padding: 22px 20px 20px; }
 
     .sec-head {
@@ -126,9 +114,9 @@
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 10px;
       font-weight: 600;
-      color: var(--rose);
-      background: var(--rose-bg);
-      border: 1px solid #F0B0BE;
+      color: var(--paper);
+      background: var(--ink-mid);
+      border: 1px solid var(--ink);
       border-radius: 20px;
       padding: 2px 10px;
     }
@@ -186,7 +174,7 @@
       text-align: center;
       padding: 4px 2px;
       border-right: 1.5px solid var(--paper-mid);
-      background: #F8F0E0 !important;
+      background: #F0E8D0 !important;
       white-space: nowrap;
     }
 
@@ -200,9 +188,9 @@
       word-break: keep-all;
     }
 
-    .chip-gold  { background: var(--gold-bg);  border: 1px solid #D4B060; color: var(--gold); }
-    .chip-rose  { background: var(--rose-bg);  border: 1px solid #E8A0B0; color: var(--rose); }
-    .chip-lav   { background: var(--lav-bg);   border: 1px solid #C0ADE8; color: var(--lav); }
+    .chip-gold  { background: var(--ink);     border: 1px solid var(--ink);     color: var(--paper); }
+    .chip-rose  { background: var(--ink-mid); border: 1px solid var(--ink-mid); color: var(--paper); }
+    .chip-lav   { background: #7A5C48;        border: 1px solid #7A5C48;        color: var(--paper); }
     .chip-plain { background: var(--paper-dark); border: 1px solid var(--paper-mid); color: var(--ink-mid); }
 
     .fancy-div {
@@ -228,11 +216,9 @@
     }
 
     .card { border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; }
-
     .card-head { background: var(--ink); color: var(--paper); padding: 9px 13px; }
     .card-head-title { font-size: 13.5px; font-weight: 700; letter-spacing: 0.3px; }
     .card-head-date { font-family: 'Noto Sans KR', sans-serif; font-size: 10px; margin-top: 2px; opacity: 0.7; }
-
     .card-body { padding: 10px 12px; }
 
     .role-row {
@@ -250,21 +236,21 @@
 
     .prayer-box {
       margin: 10px 12px 12px;
-      background: var(--sage-bg);
-      border: 1px solid #A8D4B8;
+      background: var(--paper-dark);
+      border: 1px solid var(--paper-mid);
       border-radius: 4px;
       padding: 8px 10px;
     }
 
-    .prayer-title { font-family: 'Noto Sans KR', sans-serif; font-size: 10px; font-weight: 700; color: var(--sage); margin-bottom: 6px; }
+    .prayer-title { font-family: 'Noto Sans KR', sans-serif; font-size: 10px; font-weight: 700; color: var(--ink-mid); margin-bottom: 6px; }
     .prayer-tags { display: flex; flex-wrap: wrap; gap: 4px; }
 
     .prayer-tag {
       font-family: 'Noto Sans KR', sans-serif;
       font-size: 10.5px;
-      color: var(--sage);
-      background: white;
-      border: 1px solid #90C8A4;
+      color: var(--ink-mid);
+      background: var(--paper);
+      border: 1px solid var(--ink-soft);
       border-radius: 20px;
       padding: 2px 9px;
     }
@@ -285,7 +271,7 @@
     @media (max-width: 420px) {
       .church-name { font-size: 34px; }
       .cards-row { grid-template-columns: 1fr; }
-      .masthead-meta { font-size: 8px; gap: 4px; }
+      .masthead-meta { font-size: 8px; }
       .date-strip { font-size: 9.5px; padding: 6px 12px; }
       .content { padding: 16px 14px; }
     }
@@ -302,7 +288,7 @@
       <span>제 2026-19호</span>
     </div>
     <div class="masthead-center">
-      <div class="church-name"><em>성</em>민교회</div>
+      <div class="church-name">성민교회</div>
       <div class="church-sub">S U N G M I N &nbsp; C H U R C H</div>
     </div>
   </div>
@@ -311,7 +297,7 @@
 
   <div class="date-strip">
     <span>🗓 2026년 5월 11일 — 5월 16일</span>
-    <span class="blessing">은혜로운 한 주간 되세요 🌸</span>
+    <span>은혜로운 한 주간 되세요 🌸</span>
   </div>
 
   <div class="content">

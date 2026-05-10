@@ -286,12 +286,19 @@ CSS = """
     .worship-date { font-size: 10px; color: var(--soft); margin-top: 2px; font-weight: 500; }
     .worship-card-body { padding: 10px 14px; }
     .role-row {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 5px 0; border-bottom: 1.5px dashed #F0EDE8;
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 0; border-bottom: 1.5px dashed #F0EDE8;
     }
     .role-row:last-child { border-bottom: none; }
-    .role-lbl { font-size: 10px; font-weight: 700; color: var(--soft); min-width: 28px; }
-    .role-val { font-size: 12.5px; font-weight: 600; }
+    .role-tag {
+      display: inline-block;
+      font-size: 10.5px; font-weight: 700;
+      padding: 2px 9px; border-radius: 8px;
+      background: #FFF3E0; border: 1.5px solid #FFCC80; color: #E65100;
+      white-space: nowrap; flex-shrink: 0;
+      box-shadow: 1px 2px 0 rgba(230,81,0,.12);
+    }
+    .role-val { font-size: 13px; font-weight: 700; }
     .prayer-box {
       margin: 6px 14px 13px;
       background: var(--yellow-bg); border: 2px dashed var(--yellow);
@@ -348,11 +355,11 @@ def generate_html(dawn, wednesday, friday):
         dawn_rows += f'<tr><td><span class="row-label">{role}</span></td>{cells}</tr>\n'
 
     wed_roles_html = ''.join(
-        f'<div class="role-row"><span class="role-lbl">{r}</span><span class="role-val">{clean_name(v)}</span></div>'
+        f'<div class="role-row"><span class="role-tag">{r}</span><span class="role-val">{clean_name(v)}</span></div>'
         for r, v in wednesday.get('roles', {}).items()
     )
     fri_roles_html = ''.join(
-        f'<div class="role-row"><span class="role-lbl">{r}</span><span class="role-val">{clean_name(v)}</span></div>'
+        f'<div class="role-row"><span class="role-tag">{r}</span><span class="role-val">{clean_name(v)}</span></div>'
         for r, v in friday.get('roles', {}).items()
     )
     prayer_tags_html = ''.join(

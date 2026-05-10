@@ -137,11 +137,11 @@ def clean_name(name):
 def chip_html(name, role):
     name = clean_name(name)
     if name == '목사님':
-        css = 'chip-rose'
+        css = 'chip-pastor'
     elif role == '설교':
-        css = 'chip-gold'
+        css = 'chip-sermon'
     elif role == '자막':
-        css = 'chip-lav'
+        css = 'chip-sub'
     else:
         css = 'chip-plain'
     return f'<span class="chip {css}">{name}</span>'
@@ -149,140 +149,180 @@ def chip_html(name, role):
 
 CSS = """
     :root {
-      --paper:      #FDF9F0;
-      --paper-dark: #F2EAD3;
-      --paper-mid:  #E8DBBF;
-      --ink:        #1A0E0A;
-      --ink-mid:    #4A2C1C;
-      --ink-soft:   #8B6B4B;
+      --bg:        #F0EDE6;
+      --white:     #FFFFFF;
+      --text:      #3A2E26;
+      --soft:      #9E8E80;
+      --border:    #E6DDD4;
+      --green:     #77C17E;
+      --green-bg:  #EAF6EB;
+      --pink:      #F2889A;
+      --pink-bg:   #FDEDF0;
+      --yellow:    #F5C842;
+      --yellow-bg: #FFFAED;
+      --blue:      #72B6E0;
+      --blue-bg:   #EAF4FC;
+      --purple:    #9B8EC4;
+      --purple-bg: #F0EDFA;
+      --orange:    #F09050;
+      --orange-bg: #FEF3EC;
     }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; }
     body {
-      background: #D4C5A0;
+      background: var(--bg);
       background-image:
-        repeating-linear-gradient(0deg, transparent, transparent 24px, rgba(0,0,0,.04) 24px, rgba(0,0,0,.04) 25px),
-        repeating-linear-gradient(90deg, transparent, transparent 24px, rgba(0,0,0,.04) 24px, rgba(0,0,0,.04) 25px);
-      font-family: 'Noto Serif KR', serif;
-      color: var(--ink);
+        radial-gradient(ellipse at 10% 15%, rgba(119,193,126,.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 85%, rgba(242,136,154,.14) 0%, transparent 45%),
+        radial-gradient(ellipse at 60% 40%, rgba(245,200,66,.10) 0%, transparent 40%);
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--text);
       min-height: 100vh;
-      padding: 20px 12px 40px;
+      padding: 28px 14px 56px;
     }
-    .newspaper {
-      max-width: 640px; margin: 0 auto;
-      background: var(--paper);
-      border: 2px solid var(--ink);
-      box-shadow: 5px 5px 0 #A08860, 10px 10px 0 #C4AA80;
+    .wrap { max-width: 600px; margin: 0 auto; }
+    .header { text-align: center; margin-bottom: 22px; }
+    .header-label {
+      display: inline-block;
+      background: var(--green); color: #fff;
+      font-size: 10.5px; font-weight: 700; letter-spacing: 1.5px;
+      padding: 4px 14px; border-radius: 20px; margin-bottom: 10px;
+      box-shadow: 3px 3px 0 rgba(100,170,106,.35);
+      transform: rotate(-1.5deg);
     }
-    .masthead { padding: 18px 24px 14px; border-bottom: 4px double var(--ink); }
-    .masthead-meta {
-      display: flex; justify-content: space-between; align-items: center;
-      font-family: 'Noto Sans KR', sans-serif; font-size: 9.5px;
-      color: var(--ink-soft); letter-spacing: 0.5px;
-      margin-bottom: 10px; padding-bottom: 6px; border-bottom: 1px solid var(--paper-mid);
+    .header-label::before { content: '🌿'; margin-right: 4px; }
+    .church-name {
+      font-family: 'Noto Serif KR', serif;
+      font-size: 42px; font-weight: 900; color: var(--text);
+      letter-spacing: -1px; line-height: 1; margin-bottom: 4px;
     }
-    .masthead-center { text-align: center; }
-    .church-name { font-size: 44px; font-weight: 900; letter-spacing: -2px; line-height: 1; color: var(--ink); }
-    .church-sub { font-family: 'Noto Sans KR', sans-serif; font-size: 10px; letter-spacing: 4px; color: var(--ink-mid); margin-top: 5px; }
-    .headline-block {
-      background: var(--ink); color: var(--paper);
-      text-align: center; padding: 10px 20px;
-      font-size: 17px; font-weight: 700; letter-spacing: 1px;
+    .church-sub { font-size: 9.5px; letter-spacing: 4.5px; color: var(--soft); margin-bottom: 16px; }
+    .title-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--text); color: #fff;
+      font-size: 14.5px; font-weight: 700;
+      padding: 9px 22px; border-radius: 50px;
+      box-shadow: 4px 4px 0 rgba(58,46,38,.18);
     }
-    .date-strip {
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 7px 18px; background: var(--paper-dark);
-      border-bottom: 1px solid var(--ink);
-      font-family: 'Noto Sans KR', sans-serif; font-size: 10.5px; color: var(--ink-mid);
+    .date-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 14px 0 22px; }
+    .date-sticker {
+      background: var(--yellow-bg); border: 2px solid var(--yellow);
+      color: var(--text); font-size: 11px; font-weight: 700;
+      padding: 5px 14px; border-radius: 20px;
+      box-shadow: 2px 3px 0 rgba(245,200,66,.3);
     }
-    .content { padding: 22px 20px 20px; }
-    .sec-head {
-      display: flex; align-items: baseline; gap: 8px;
-      border-bottom: 2.5px solid var(--ink); padding-bottom: 7px; margin-bottom: 14px;
+    .date-sticker.soft {
+      background: #fff; border-color: var(--border);
+      color: var(--soft); font-weight: 400;
+      box-shadow: 2px 3px 0 rgba(0,0,0,.05);
     }
-    .sec-icon { font-size: 17px; }
-    .sec-title { font-size: 17px; font-weight: 700; letter-spacing: 0.3px; }
+    .card {
+      background: var(--white); border-radius: 22px; padding: 20px; margin-bottom: 14px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+    }
+    .sec-head { display: flex; align-items: center; gap: 11px; margin-bottom: 16px; }
+    .sec-icon {
+      width: 44px; height: 44px; border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; flex-shrink: 0;
+      box-shadow: 2px 4px 8px rgba(0,0,0,.10);
+    }
+    .sec-icon.green  { background: var(--green-bg); }
+    .sec-title { font-size: 16px; font-weight: 700; }
     .sec-badge {
-      margin-left: auto; font-family: 'Noto Sans KR', sans-serif;
-      font-size: 10px; font-weight: 600;
-      color: var(--paper); background: var(--ink-mid);
-      border: 1px solid var(--ink); border-radius: 20px; padding: 2px 10px;
+      margin-left: auto; font-size: 10px; font-weight: 700;
+      padding: 3px 11px; border-radius: 20px;
+      background: var(--green-bg); border: 1.5px solid var(--green); color: #388E3C;
+      box-shadow: 1px 2px 0 rgba(0,0,0,.07);
     }
-    .table-wrap { border: 1px solid var(--ink); border-radius: 2px; overflow: hidden; }
-    table.dawn { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 11px; }
-    table.dawn thead tr { background: var(--ink); color: var(--paper); }
-    table.dawn th {
-      padding: 7px 2px; text-align: center;
-      font-family: 'Noto Sans KR', sans-serif; font-weight: 500; font-size: 11px;
-      border-right: 1px solid #3A2010;
+    .dawn-table { width: 100%; border-collapse: separate; border-spacing: 0 5px; font-size: 11.5px; }
+    .dawn-table thead th {
+      text-align: center; font-size: 10px; font-weight: 700;
+      color: var(--soft); padding: 0 3px 6px;
     }
-    table.dawn th:last-child { border-right: none; }
-    table.dawn th small { display: block; font-size: 9px; opacity: 0.7; font-weight: 300; }
-    table.dawn td {
-      padding: 7px 2px; text-align: center;
-      border-right: 1px solid #E0D0B8; border-bottom: 1px solid #E0D0B8; vertical-align: middle;
+    .dawn-table thead th small { display: block; font-size: 9px; font-weight: 400; margin-top: 1px; }
+    .dawn-table tbody td {
+      padding: 7px 3px; text-align: center;
+      background: #FAFAF8;
+      border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border);
     }
-    table.dawn td:last-child { border-right: none; }
-    table.dawn tr:last-child td { border-bottom: none; }
-    table.dawn tr:nth-child(even) td { background: var(--paper-dark); }
-    table.dawn td.role {
-      font-family: 'Noto Sans KR', sans-serif; font-weight: 700; font-size: 10px;
-      color: var(--ink-mid); text-align: center; padding: 4px 2px;
-      border-right: 1.5px solid var(--paper-mid);
-      background: #F0E8D0 !important; white-space: nowrap;
+    .dawn-table tbody td:first-child {
+      border-left: 1.5px solid var(--border);
+      border-radius: 10px 0 0 10px; padding-left: 8px;
     }
+    .dawn-table tbody td:last-child {
+      border-right: 1.5px solid var(--border);
+      border-radius: 0 10px 10px 0; padding-right: 6px;
+    }
+    .row-label { font-size: 10px; font-weight: 700; color: var(--soft); white-space: nowrap; }
     .chip {
-      display: inline-block; border-radius: 6px; padding: 2px 4px;
-      font-size: 10px; font-family: 'Noto Sans KR', sans-serif;
-      line-height: 1.3; word-break: keep-all;
+      display: inline-block; padding: 3px 7px; border-radius: 10px;
+      font-size: 10.5px; font-weight: 700; line-height: 1.4;
+      box-shadow: 1px 2px 0 rgba(0,0,0,.08);
     }
-    .chip-gold  { background: var(--ink);        border: 1px solid var(--ink);        color: var(--paper); }
-    .chip-rose  { background: var(--ink-mid);    border: 1px solid var(--ink-mid);    color: var(--paper); }
-    .chip-lav   { background: #7A5C48;           border: 1px solid #7A5C48;           color: var(--paper); }
-    .chip-plain { background: var(--paper-dark); border: 1px solid var(--paper-mid);  color: var(--ink-mid); }
-    .fancy-div {
-      display: flex; align-items: center; gap: 10px;
-      margin: 20px 0; color: var(--ink-soft); font-size: 13px;
+    .chip-pastor  { background: var(--pink-bg);   border: 1.5px solid var(--pink);   color: #C2185B; }
+    .chip-sermon  { background: var(--yellow-bg);  border: 1.5px solid var(--yellow); color: #C77800; }
+    .chip-sub     { background: var(--purple-bg);  border: 1.5px solid var(--purple); color: #512DA8; }
+    .chip-plain   { background: #F5F3F0;           border: 1.5px solid #DDD8D0;       color: #5A4E44; }
+    .nature-divider {
+      text-align: center; font-size: 18px; letter-spacing: 10px;
+      margin: 6px 0; opacity: 0.55; user-select: none;
     }
-    .fancy-div::before, .fancy-div::after {
-      content: ''; flex: 1; height: 1px;
-      background: linear-gradient(to right, transparent, var(--paper-mid), var(--ink-soft), var(--paper-mid), transparent);
+    .worship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .worship-card {
+      background: var(--white); border-radius: 20px; overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
     }
-    .cards-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .card { border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; }
-    .card-head { background: var(--ink); color: var(--paper); padding: 9px 13px; }
-    .card-head-title { font-size: 13.5px; font-weight: 700; letter-spacing: 0.3px; }
-    .card-head-date { font-family: 'Noto Sans KR', sans-serif; font-size: 10px; margin-top: 2px; opacity: 0.7; }
-    .card-body { padding: 10px 12px; }
+    .worship-card-head { padding: 14px 14px 11px; }
+    .worship-card-head.wed {
+      background: linear-gradient(140deg, #EAF4FC 0%, #F3F8FF 100%);
+      border-bottom: 2px dashed #BEE0F8;
+    }
+    .worship-card-head.fri {
+      background: linear-gradient(140deg, #FFF8E8 0%, #FFFDF5 100%);
+      border-bottom: 2px dashed #FFDFAA;
+    }
+    .worship-icon { font-size: 26px; margin-bottom: 5px; }
+    .worship-title { font-size: 13px; font-weight: 700; }
+    .worship-date { font-size: 10px; color: var(--soft); margin-top: 2px; font-weight: 500; }
+    .worship-card-body { padding: 10px 14px; }
     .role-row {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 6px 0; border-bottom: 1px dashed #D8C8A8; font-size: 12.5px;
+      padding: 5px 0; border-bottom: 1.5px dashed #F0EDE8;
     }
     .role-row:last-child { border-bottom: none; }
-    .role-lbl { font-family: 'Noto Sans KR', sans-serif; font-size: 10px; font-weight: 700; color: var(--ink-soft); min-width: 28px; }
+    .role-lbl { font-size: 10px; font-weight: 700; color: var(--soft); min-width: 28px; }
     .role-val { font-size: 12.5px; font-weight: 600; }
     .prayer-box {
-      margin: 10px 12px 12px; background: var(--paper-dark);
-      border: 1px solid var(--paper-mid); border-radius: 4px; padding: 8px 10px;
+      margin: 6px 14px 13px;
+      background: var(--yellow-bg); border: 2px dashed var(--yellow);
+      border-radius: 14px; padding: 9px 11px;
     }
-    .prayer-title { font-family: 'Noto Sans KR', sans-serif; font-size: 10px; font-weight: 700; color: var(--ink-mid); margin-bottom: 6px; }
-    .prayer-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+    .prayer-title { font-size: 10px; font-weight: 700; color: #C77800; margin-bottom: 7px; }
+    .prayer-title::before { content: '🙏 '; }
+    .prayer-tags { display: flex; flex-wrap: wrap; gap: 5px; }
     .prayer-tag {
-      font-family: 'Noto Sans KR', sans-serif; font-size: 10.5px;
-      color: var(--ink-mid); background: var(--paper);
-      border: 1px solid var(--ink-soft); border-radius: 20px; padding: 2px 9px;
+      background: #fff; border: 1.5px solid var(--yellow);
+      color: var(--text); font-size: 10.5px; font-weight: 600;
+      padding: 3px 9px; border-radius: 20px;
+      box-shadow: 1px 2px 0 rgba(245,200,66,.25);
     }
     .footer {
-      border-top: 4px double var(--ink); padding: 12px 20px; text-align: center;
-      font-family: 'Noto Sans KR', sans-serif; font-size: 10px;
-      color: var(--ink-soft); background: var(--paper-dark); line-height: 1.7;
+      text-align: center; margin-top: 8px; padding: 16px;
+      background: var(--white); border-radius: 18px; font-size: 10.5px;
+      color: var(--soft); box-shadow: 0 4px 16px rgba(0,0,0,.04); line-height: 1.9;
     }
-    .footer strong { color: var(--ink-mid); }
-    @media (max-width: 420px) {
-      .church-name { font-size: 34px; }
-      .cards-row { grid-template-columns: 1fr; }
-      .masthead-meta { font-size: 8px; }
-      .date-strip { font-size: 9.5px; padding: 6px 12px; }
-      .content { padding: 16px 14px; }
+    .footer-badge {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: var(--green-bg); border: 1.5px solid var(--green); color: #388E3C;
+      font-size: 10.5px; font-weight: 700;
+      padding: 4px 13px; border-radius: 20px; margin-bottom: 8px;
+      box-shadow: 2px 2px 0 rgba(100,170,106,.2);
+    }
+    @media (max-width: 430px) {
+      .church-name { font-size: 33px; }
+      .worship-grid { grid-template-columns: 1fr; }
+      body { padding: 20px 12px 44px; }
+      .sec-icon { width: 38px; height: 38px; font-size: 20px; border-radius: 12px; }
     }
 """
 
@@ -305,7 +345,7 @@ def generate_html(dawn, wednesday, friday):
     for role in ['설교', '자막', '반주']:
         persons = dawn.get('roles', {}).get(role, [''] * 6)
         cells = ''.join(f'<td>{chip_html(p, role)}</td>' for p in persons[:6])
-        dawn_rows += f'<tr><td class="role">{role}</td>{cells}</tr>\n'
+        dawn_rows += f'<tr><td><span class="row-label">{role}</span></td>{cells}</tr>\n'
 
     wed_roles_html = ''.join(
         f'<div class="role-row"><span class="role-lbl">{r}</span><span class="role-val">{clean_name(v)}</span></div>'
@@ -326,7 +366,6 @@ def generate_html(dawn, wednesday, friday):
     fri_day   = friday.get('day', '?')
     badge        = f'{month}/{start_day} — {month}/{end_day}'
     date_display = f'{YEAR}년 {month}월 {start_day}일 — {month}월 {end_day}일'
-    meta_date    = f'✝ {YEAR}년 {month}월 {start_day}일(월) — {end_day}일(토)'
     updated_at   = datetime.now().strftime('%Y-%m-%d %H:%M')
 
     return f"""<!DOCTYPE html>
@@ -336,68 +375,59 @@ def generate_html(dawn, wednesday, friday):
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>한 주간 예배 담당자 — 성민교회</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>{CSS}</style>
 </head>
 <body>
-<div class="newspaper">
-  <div class="masthead">
-    <div class="masthead-meta">
-      <span>{meta_date}</span>
-      <span>매일의 향기</span>
-      <span>자동 업데이트 {updated_at}</span>
-    </div>
-    <div class="masthead-center">
-      <div class="church-name">성민교회</div>
-      <div class="church-sub">S U N G M I N &nbsp; C H U R C H</div>
-    </div>
+<div class="wrap">
+  <div class="header">
+    <div><span class="header-label">성민교회</span></div>
+    <div class="church-name">성민교회</div>
+    <div class="church-sub">S U N G M I N &nbsp; C H U R C H</div>
+    <div class="title-pill">🌸 한 주간 예배 담당자</div>
   </div>
-  <div class="headline-block">💯 한 주간 예배 담당자</div>
-  <div class="date-strip">
-    <span>🗓 {date_display}</span>
-    <span>은혜로운 한 주간 되세요 🌸</span>
+  <div class="date-row">
+    <span class="date-sticker">🗓 {date_display}</span>
+    <span class="date-sticker soft">자동 업데이트 {updated_at}</span>
   </div>
-  <div class="content">
+  <div class="card">
     <div class="sec-head">
-      <span class="sec-icon">🌅</span>
+      <div class="sec-icon green">🌅</div>
       <span class="sec-title">새벽기도회 담당</span>
       <span class="sec-badge">{badge}</span>
     </div>
-    <div class="table-wrap">
-      <table class="dawn">
-        <thead><tr><th style="width:40px">역할</th>{day_headers}</tr></thead>
-        <tbody>{dawn_rows}</tbody>
-      </table>
-    </div>
-    <div class="fancy-div">✦ &nbsp; ✦ &nbsp; ✦</div>
-    <div class="sec-head">
-      <span class="sec-icon">🕊</span>
-      <span class="sec-title">주중 예배 담당</span>
-    </div>
-    <div class="cards-row">
-      <div class="card">
-        <div class="card-head">
-          <div class="card-head-title">🕊 수요예배</div>
-          <div class="card-head-date">{wed_month}월 {wed_day}일 (수)</div>
-        </div>
-        <div class="card-body">{wed_roles_html}</div>
+    <table class="dawn-table">
+      <thead><tr><th style="width:38px"></th>{day_headers}</tr></thead>
+      <tbody>{dawn_rows}</tbody>
+    </table>
+  </div>
+  <div class="nature-divider">🍃 🌿 🍃</div>
+  <div class="worship-grid">
+    <div class="worship-card">
+      <div class="worship-card-head wed">
+        <div class="worship-icon">🕊️</div>
+        <div class="worship-title">수요예배</div>
+        <div class="worship-date">{wed_month}월 {wed_day}일 (수)</div>
       </div>
-      <div class="card">
-        <div class="card-head">
-          <div class="card-head-title">🔥 금요성령집회</div>
-          <div class="card-head-date">{fri_month}월 {fri_day}일 (금)</div>
-        </div>
-        <div class="card-body">{fri_roles_html}</div>
-        <div class="prayer-box">
-          <div class="prayer-title">🙏 기도용사</div>
-          <div class="prayer-tags">{prayer_tags_html}</div>
-        </div>
+      <div class="worship-card-body">{wed_roles_html}</div>
+    </div>
+    <div class="worship-card">
+      <div class="worship-card-head fri">
+        <div class="worship-icon">🔥</div>
+        <div class="worship-title">금요성령집회</div>
+        <div class="worship-date">{fri_month}월 {fri_day}일 (금)</div>
+      </div>
+      <div class="worship-card-body">{fri_roles_html}</div>
+      <div class="prayer-box">
+        <div class="prayer-title">기도용사</div>
+        <div class="prayer-tags">{prayer_tags_html}</div>
       </div>
     </div>
   </div>
   <div class="footer">
-    <strong>✝ 성민교회</strong> — 사랑과 은혜가 넘치는 공동체<br>
-    매일의 향기와 함께하는 신앙생활 🌸
+    <div><span class="footer-badge">🌳 성민교회</span></div>
+    사랑과 은혜가 넘치는 공동체<br>
+    은혜로운 한 주간 되세요 🌸
   </div>
 </div>
 </body>

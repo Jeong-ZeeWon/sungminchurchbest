@@ -389,9 +389,6 @@ def generate_html(dawn, wednesday, friday):
 <body>
 <div class="wrap">
   <div class="header">
-    <div><span class="header-label">성민교회</span></div>
-    <div class="church-name">성민교회</div>
-    <div class="church-sub">S U N G M I N &nbsp; C H U R C H</div>
     <div class="title-pill">🌸 한 주간 예배 담당자</div>
   </div>
   <div class="date-row">

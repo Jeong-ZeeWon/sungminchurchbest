@@ -267,12 +267,13 @@ CSS = """
       text-align: center; font-size: 18px; letter-spacing: 10px;
       margin: 6px 0; opacity: 0.55; user-select: none;
     }
-    .worship-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .worship-grid { display: flex; gap: 12px; justify-content: center; }
     .worship-card {
+      flex: 0 0 195px;
       background: var(--white); border-radius: 20px; overflow: hidden;
       box-shadow: 0 6px 24px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
     }
-    .worship-card-head { padding: 14px 14px 11px; }
+    .worship-card-head { padding: 12px 12px 10px; }
     .worship-card-head.wed {
       background: linear-gradient(140deg, #EAF4FC 0%, #F3F8FF 100%);
       border-bottom: 2px dashed #BEE0F8;
@@ -284,7 +285,7 @@ CSS = """
     .worship-icon { font-size: 26px; margin-bottom: 5px; }
     .worship-title { font-size: 13px; font-weight: 700; }
     .worship-date { font-size: 10px; color: var(--soft); margin-top: 2px; font-weight: 500; }
-    .worship-card-body { padding: 10px 14px; }
+    .worship-card-body { padding: 8px 10px; }
     .role-row {
       display: flex; align-items: center; gap: 8px;
       padding: 6px 0; border-bottom: 1.5px dashed #F0EDE8;
@@ -300,7 +301,7 @@ CSS = """
     }
     .role-val { font-size: 13px; font-weight: 700; }
     .prayer-box {
-      margin: 6px 14px 13px;
+      margin: 4px 10px 12px;
       background: var(--yellow-bg); border: 2px dashed var(--yellow);
       border-radius: 14px; padding: 9px 11px;
     }

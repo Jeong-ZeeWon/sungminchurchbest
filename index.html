@@ -710,6 +710,7 @@ const renderers = {
   wednesday: renderWednesday,
   friday:    renderFriday,
   leaders:   renderLeaders,
+  qt:        initQT,
 };
 
 // ── SUNDAY ────────────────────────────────────
@@ -942,7 +943,7 @@ function buildQTCal() {
     cal.appendChild(el);
   }
   const sel = cal.querySelector('.selected');
-  if (sel) sel.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+  if (sel && document.getElementById('s-qt').classList.contains('active')) sel.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
 }
 
 function qtNav(dir) {
@@ -1092,16 +1093,18 @@ function renderLeaders() {
 //  INIT
 // ══════════════════════════════════════════════
 
+function initQT() {
+  buildQTCal();
+  renderQTCard();
+  updateQTNav();
+}
+
 function init() {
   const today = new Date();
   const m = today.getMonth() + 1;
   const d = today.getDate();
   const dow = KDOW[today.getDay()];
   document.getElementById('heroDate').textContent = `${today.getFullYear()}년 ${m}월 ${d}일 (${dow})`;
-
-  buildQTCal();
-  renderQTCard();
-  updateQTNav();
 }
 
 init();

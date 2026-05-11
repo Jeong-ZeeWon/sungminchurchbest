@@ -37,11 +37,11 @@
       --ldr-light:  #9ED4B0;
     }
 
-    html, body { height: 100%; margin: 0; }
+    html, body { height: 100%; margin: 0; overflow: hidden; }
     body { font-family: 'Noto Sans KR', sans-serif; background: var(--bg); color: var(--text); }
 
     /* ── APP SHELL ── */
-    #app { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; flex-direction: column; overflow: hidden; }
+    #app { width: 100%; height: 100%; display: flex; flex-direction: column; overflow: hidden; }
 
     .app-header {
       flex-shrink: 0;
@@ -67,7 +67,7 @@
     /* ── SCREENS ── */
     .screen-wrap { flex: 1; position: relative; overflow: hidden; }
     .screen {
-      position: absolute; inset: 0;
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       overflow-y: auto; overflow-x: hidden;
       -webkit-overflow-scrolling: touch;
       background: var(--bg);
@@ -1105,6 +1105,15 @@ function init() {
 }
 
 init();
+  // iOS viewport height fix
+  (function(){
+    function fixH(){
+      document.getElementById('app').style.height = window.innerHeight+'px';
+    }
+    fixH();
+    window.addEventListener('resize', fixH);
+    window.addEventListener('orientationchange', function(){ setTimeout(fixH,200); });
+  })();
 </script>
 </body>
 </html>

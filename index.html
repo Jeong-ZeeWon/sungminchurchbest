@@ -383,7 +383,7 @@
     <button class="back-btn" id="backBtn" onclick="goBack()">‹</button>
     <div class="header-inner">
       <div class="header-title" id="hTitle">✝ 성민교회</div>
-      <div class="header-sub"  id="hSub">매일의 향기</div>
+      <div class="header-sub"  id="hSub">큐티 본문</div>
     </div>
   </header>
 
@@ -419,9 +419,9 @@
           </div>
           <div class="menu-card card-qt" onclick="goTo('qt')">
             <span class="m-icon">📖</span>
-            <div class="m-title">매일의 향기</div>
-            <div class="m-desc">매일 큐티 본문과 기도,<br>90일 성경통독</div>
-            <span class="m-badge">큐티 · 통독</span>
+            <div class="m-title">큐티 본문</div>
+            <div class="m-desc">매일 큐티 본문과 제목<br>5월 · 6월 한달치</div>
+            <span class="m-badge">큐티 · 고린도전서</span>
           </div>
           <div class="menu-card card-ldr full" onclick="goTo('leaders')">
             <span class="m-icon">👥</span>
@@ -446,20 +446,7 @@
     <div class="screen" id="s-detail"></div>
 
     <!-- QT -->
-    <div class="screen" id="s-qt">
-      <div class="qt-header">
-        <div class="qt-month" id="qtMonth">🌷 2026년 5월</div>
-        <div class="qt-cal" id="qtCal"></div>
-      </div>
-      <div class="qt-body">
-        <div class="qt-nav">
-          <button class="qt-nav-btn" id="qtPrev" onclick="qtNav(-1)">← 이전</button>
-          <span class="qt-nav-lbl" id="qtNavLbl"></span>
-          <button class="qt-nav-btn" id="qtNext" onclick="qtNav(1)">다음 →</button>
-        </div>
-        <div id="qtCard"></div>
-      </div>
-    </div>
+    <div class="screen" id="s-qt"></div>
 
     <!-- LEADERS -->
     <div class="screen" id="s-leaders"></div>
@@ -477,8 +464,6 @@ const KDOW = ['일','월','화','수','목','금','토'];
 
 // ── 주일예배 ──────────────────────────────────
 const sundayData = [
-  { date:'2026-05-10', week:48, passage:'요한복음 9:13-23', title:'빛 앞에서 갈라지는 시선',
-    staff:{'1부 사회':'최명환','2부 사회':'정지원','3부 사회':'박정인','1부 PD':'노태규','1부 자막':'윤수신','2부 PD':'박정인'} },
   { date:'2026-05-17', week:49, passage:'요한복음 9:24-34', title:'나는 보았다',
     staff:{'1부 사회':'노태규','2부 사회':'박정인','3부 사회':'최명환','1부 PD':'윤수신','1부 자막':'최명환','2부 PD':'정지원'} },
   { date:'2026-05-24', week:50, passage:'요한복음 9:35-41', title:'보게 된 자, 보지 못하는 자',
@@ -512,15 +497,6 @@ const sundayData = [
 
 // ── 수요예배 ──────────────────────────────────
 const wednesdayData = [
-  { date:'2026-03-11', lec:1,  subject:'사도행전 1',                 preacher:'박정인 목사', worship:'최명환', sound:'정지원', pd:'노태규' },
-  { date:'2026-03-18', lec:2,  subject:'사도행전 2',                 preacher:'박정인 목사', worship:'정지원', sound:'노태규', pd:'윤수신' },
-  { date:'2026-03-25', lec:3,  subject:'로마서',                    preacher:'박정인 목사', worship:'노태규', sound:'최명환', pd:'정지원' },
-  { date:'2026-04-01', lec:4,  subject:'고린도전서',                 preacher:'최명환 목사', worship:'윤수신', sound:'박정인', pd:'정지원' },
-  { date:'2026-04-08', lec:5,  subject:'고린도후서',                 preacher:'최명환 목사', worship:'박정인', sound:'정지원', pd:'노태규' },
-  { date:'2026-04-15', lec:6,  subject:'갈라디아서 / 에베소서',     preacher:'최명환 목사', worship:'정지원', sound:'박정인', pd:'윤수신' },
-  { date:'2026-04-22', lec:7,  subject:'빌립보서 / 골로새서',       preacher:'정지원 목사', worship:'최명환', sound:'노태규', pd:'박정인' },
-  { date:'2026-04-29', lec:8,  subject:'데살로니가전후서',           preacher:'정지원 목사', worship:'노태규', sound:'윤수신', pd:'최명환' },
-  { date:'2026-05-06', lec:9,  subject:'디모데전후서 · 디도서 · 빌레몬서', preacher:'정지원 목사', worship:'박정인', sound:'최명환', pd:'윤수신' },
   { date:'2026-05-13', lec:10, subject:'히브리서 · 야고보서',        preacher:'노태규 목사', worship:'최명환', sound:'윤수신', pd:'박정인' },
   { date:'2026-05-20', lec:11, subject:'베드로전서',                 preacher:'윤수신 목사', worship:'정지원', sound:'노태규', pd:'최명환' },
   { date:'2026-05-27', lec:12, subject:'베드로후서 · 유다서',        preacher:'윤수신 목사', worship:'노태규', sound:'정지원', pd:'박정인' },
@@ -531,8 +507,6 @@ const wednesdayData = [
 
 // ── 금요성령집회 ───────────────────────────────
 const fridayData = [
-  { date:'2026-05-01', title:'오랜 침묵, 기다리시는 하나님',        passage:'삼상 7:1-4',   worship:'윤수신', pd:'박정인', caption:'정지원', prayer:'민꿈 교역자' },
-  { date:'2026-05-08', title:'미스바, 회개와 하나님의 개입',        passage:'삼상 7:5-11',  worship:'정지원', pd:'윤수신', caption:'노태규', prayer:'최명환 노태규 윤수신' },
   { date:'2026-05-15', title:'에벤에셀, 부흥과 그 이후의 삶',      passage:'삼상 7:12-17', worship:'윤수신', pd:'정지원', caption:'박정인', prayer:'박정인 정지원 김은형' },
   { date:'2026-05-22', title:'부흥 이후의 위기',                    passage:'삼상 8:1-9',   worship:'정지원', pd:'노태규', caption:'윤수신', prayer:'최명환 노태규 윤수신' },
   { date:'2026-05-29', title:'우리에게 왕을 주소서',                passage:'삼상 8:10-18', worship:'정지원', pd:'윤수신', caption:'박정인', prayer:'박정인 윤수신 김은형' },
@@ -542,86 +516,61 @@ const fridayData = [
   { date:'2026-06-26', title:'만남, 하나님의 뜻이 시작되는 순간',  passage:'삼상 9:22-27', worship:'정지원', pd:'노태규', caption:'윤수신', prayer:'최명환 노태규 윤수신' },
 ];
 
-// ── 매일의 향기 (큐티) ────────────────────────
-const devotionals = [
-  { date:'2026-05-01', dow:'금', day:63, passage:'룻 1:1~14',    dn:121, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/y6ATfLSd5Hw', dramaUrl:'https://youtu.be/DkR0Dfb_WhA', range:'겔 40:1-48:35', notionUrl:'https://www.notion.so/31a5e604d8c68097b99ef6ae334920e5',
-    greeting:'2026년 5월 1일(금) 90일성경통독과 초하루 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'흉년과 남편과 두 아들을 잃는 고통 속에서도 나오미가 고향으로 돌아가는 길을 택하였고, 오르바는 돌아섰으나 룻은 끝내 그 곁을 떠나지 않았듯이, 저희도 삶의 고통과 상실 앞에서 세상으로 돌아서지 않고 주님의 백성으로 살아가는 길을 끝까지 붙들게 하옵소서.' },
-  { date:'2026-05-02', dow:'토', day:64, passage:'룻 1:15~22',   dn:122, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/DyPVnW8Y-Ec', dramaUrl:'https://youtu.be/OY1zClBtTU4', range:'단 1:1-7:28', notionUrl:'https://www.notion.so/31a5e604d8c680a68b93e65e41ab94b5',
-    greeting:'2026년 5월 2일(토) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'룻이 "어머니의 백성이 나의 백성이 되고 어머니의 하나님이 나의 하나님이 되시리니"라고 고백하며 모든 것을 뒤로하고 나오미를 따랐듯이, 저희도 어떤 상황과 손해 앞에서도 주님의 백성으로 살기를 선택하며, 마라처럼 쓴 시절을 지날 때에도 주님께서 인도하심을 믿고 끝까지 그 길을 걷게 하옵소서.' },
-  { date:'2026-05-04', dow:'월', day:65, passage:'룻 2:8~16',    dn:124, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/TWKJypvD46Q', dramaUrl:'https://youtu.be/CqN5bPcRXO8', range:'단 8:1 - 호 14:9', notionUrl:'https://www.notion.so/31a5e604d8c6804888eefa8798423322',
-    greeting:'2026년 5월 4일(월) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'보아스가 이방 여인 룻의 헌신을 알아보고 자기 밭에서 마음껏 이삭을 줍게 하며 물과 음식을 베풀고 일꾼들에게 일부러 곡식을 떨어뜨려 두라 명하였듯이, 저희도 연약하고 낯선 이들을 향한 주님의 은혜를 기억하며 넉넉히 베푸는 삶을 살게 하시고, 지금 이삭을 줍듯 힘겹게 살아가는 이들에게 저희가 보아스의 손길이 되게 하옵소서.' },
-  { date:'2026-05-05', dow:'화', day:66, passage:'룻 2:17~23',   dn:125, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/fELMOcrMh7E', dramaUrl:'https://youtu.be/6ju63xA1YS8', range:'욜 1:1 - 욘 4:11', notionUrl:'https://www.notion.so/31a5e604d8c68042af72d3b33d7efa99',
-    greeting:'2026년 5월 5일(화) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'룻이 하루 종일 밭에서 수고하여 한 에바의 보리를 가져오자 나오미가 그 은혜를 베푼 이가 기업 무를 자 보아스임을 알아보고 여호와의 인자하심이 끊어지지 않았다고 고백하였듯이, 저희도 일상의 작은 은혜 속에서 주님의 손길을 알아보며, 힘겨운 수고의 끝에서 여전히 일하고 계신 주님의 인자하심을 고백하게 하옵소서.' },
-  { date:'2026-05-06', dow:'수', day:67, passage:'룻 3:1~18',    dn:126, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/ePt9ijSBloE', dramaUrl:'https://youtu.be/Hzp9YadOi4Y', range:'미 1:1 - 습 3:20', notionUrl:'https://www.notion.so/31a5e604d8c680f59e9cea48fdc3acc9',
-    greeting:'2026년 5월 6일(수) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'나오미의 인도를 믿고 룻이 두려움 없이 보아스의 발치에 나아가 기업 무를 자의 책임을 구하였고, 보아스가 그 신실함을 귀히 여겨 아침까지 보호하며 반드시 책임을 다하겠다 약속하였듯이, 저희도 주님의 인도하심을 믿고 담대히 은혜의 보좌 앞에 나아가 우리의 기업 무를 자 되신 그리스도께 모든 것을 맡기게 하옵소서.' },
-  { date:'2026-05-07', dow:'목', day:68, passage:'룻 4:1~6',     dn:127, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/O1uJVZQcqpY', dramaUrl:'https://youtu.be/AczT_K8efNw', range:'학 1:1 - 말 4:6', notionUrl:'https://www.notion.so/31a5e604d8c680558646f959dc2cb1c6',
-    greeting:'2026년 5월 7일(목) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'보아스가 성문에서 기업 무를 자의 책임을 공개적으로 처리하려 하였을 때, 더 가까운 친족이 자기 기업을 지키려 룻을 위한 책임을 포기하였듯이, 저희는 자기 것을 잃을까 두려워 이웃의 필요를 외면하는 자가 되지 않게 하시고, 손해를 감수하고서도 연약한 자를 품으신 그리스도의 사랑을 본받아 살게 하옵소서.' },
-  { date:'2026-05-08', dow:'금', day:69, passage:'룻 4:7~12',    dn:128, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/HGiWF2QMN3Q', dramaUrl:'https://youtu.be/7akAOR_1Zs8', range:'마 1:1-10:42', notionUrl:'https://www.notion.so/31a5e604d8c6806fb63fc1f786862081',
-    greeting:'2026년 5월 8일(금) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'보아스가 장로들과 온 백성 앞에서 신을 벗어 법적 절차를 완성하고 룻을 아내로 맞아 기업을 무르겠다 공개적으로 선언하였을 때, 백성들이 라헬과 레아와 다말의 이름을 들어 축복하였듯이, 저희도 하나님의 구원의 역사가 신실한 순종과 공동체의 증인 앞에서 이루어짐을 믿으며, 저희의 모든 서약과 헌신을 주님 앞과 공동체 앞에서 신실하게 지켜 나가게 하옵소서.' },
-  { date:'2026-05-09', dow:'토', day:70, passage:'룻 4:13~22',   dn:129, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/3aiK7WCKQBE', dramaUrl:'https://youtu.be/gwzTEDPA4gs', range:'마 11:1-18:35', notionUrl:'https://www.notion.so/31a5e604d8c680d195f7f2c3faba9b35',
-    greeting:'2026년 5월 9일(토) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'보아스와 룻의 결합으로 태어난 오벳이 나오미의 품에 안기고, 그 혈통이 다윗으로 이어지는 구원의 계보가 완성되었듯이, 저희도 고통과 상실로 시작된 삶의 여정이 주님의 손 안에서 은혜의 역사로 완성됨을 믿으며, 우리의 작은 순종과 신실함이 주님의 크신 구원 계획 안에 쓰임받게 하옵소서.' },
-  { date:'2026-05-11', dow:'월', day:71, passage:'고전 1:18~25',  dn:131, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/jARTw3VtRPY', dramaUrl:'https://youtu.be/5tqSa_ftm54', range:'마 19:1-28:20', notionUrl:'https://www.notion.so/31a5e604d8c68004a59bc6e191817c16',
-    greeting:'2026년 5월 11일(월) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'십자가의 도가 세상의 지혜로는 어리석음으로 보였으나 하나님께서 그 미련한 것으로 믿는 자들을 구원하시고 그리스도를 하나님의 능력과 지식으로 삼으셨듯이, 저희도 세상의 지혜와 논리 앞에 흔들리지 않고 오직 십자가만을 자랑하며 그 능력으로 살아가게 하옵소서.' },
-  { date:'2026-05-12', dow:'화', day:72, passage:'고전 1:26~31',  dn:132, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/39kSAih5HAw', dramaUrl:'https://youtu.be/DDLbPNIwdJA', range:'막 1:1-9:50', notionUrl:'https://www.notion.so/31a5e604d8c680859f58f4fbd7160433',
-    greeting:'2026년 5월 12일(화) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'하나님께서 세상의 미련한 것, 약한 것, 천한 것, 멸시받는 것을 택하사 지혜롭고 강한 것을 부끄럽게 하셨듯이, 저희도 스스로를 높이지 않고 오직 주 안에서만 자랑하며 그리스도 예수께서 저희의 지혜와 의로움과 거룩함과 구원이 되심을 고백하게 하옵소서.' },
-  { date:'2026-05-13', dow:'수', day:73, passage:'고전 2:1~9',    dn:133, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/YZLzmYYETbc', dramaUrl:'https://youtu.be/4LeugjRbccQ', range:'막 10:1-16:20', notionUrl:'https://www.notion.so/31a5e604d8c680aeb3c5ea2f9412f34f',
-    greeting:'2026년 5월 13일(수) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 말의 지혜와 능란함을 의지하지 않고 오직 예수 그리스도와 그의 십자가 외에는 아무것도 알지 않기로 작정하여 하나님의 능력으로 복음을 전했듯이, 저희도 인간의 지혜와 설득력을 의지하지 않고 하나님이 사랑하는 자들을 위해 예비하신 것들을 오직 성령의 능력으로 선포하게 하옵소서.' },
-  { date:'2026-05-14', dow:'목', day:74, passage:'고전 2:10~16',  dn:134, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/aKzZg3RAT_k', dramaUrl:'https://youtu.be/Iumo2_dVQBM', range:'눅 1:1-9:50', notionUrl:'https://www.notion.so/31a5e604d8c680b097b5c53fdc4ad08c',
-    greeting:'2026년 5월 14일(목) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'하나님께서 성령으로 하나님의 깊은 것까지 통달하게 하시고 저희에게 세상의 영이 아닌 하나님의 영을 주사 그 은혜를 알게 하셨듯이, 저희도 육에 속한 사람의 눈으로 하나님의 일을 어리석게 여기지 않고 그리스도의 마음을 품어 성령의 가르침으로 신령한 것을 분별하며 살아가게 하옵소서.' },
-  { date:'2026-05-15', dow:'금', day:75, passage:'고전 3:1~15',   dn:135, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/botIGdOBq28', dramaUrl:'https://youtu.be/s3qNvgJ1NfM', range:'눅 9:51-19:44', notionUrl:'https://www.notion.so/31a5e604d8c68092aecbc38c2262c3d8',
-    greeting:'2026년 5월 15일(금) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 고린도 교회의 분쟁과 시기와 분열을 보며 그들이 아직 육신에 속한 어린아이와 같다고 책망하고 오직 하나님만이 자라게 하시는 분임을 선언했듯이, 저희도 사람을 따르는 교만을 버리고 금과 은과 보석처럼 불에도 살아남는 말씀 위에 신실하게 세워져 심판 날에 주님 앞에 부끄럽지 않은 일꾼으로 서게 하옵소서.' },
-  { date:'2026-05-16', dow:'토', day:76, passage:'고전 3:16~23',  dn:136, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/ffWVlREkWT4', dramaUrl:'https://youtu.be/kPmUEVt51W8', range:'눅 19:45-24:53', notionUrl:'https://www.notion.so/31a5e604d8c6805f8dbfc8dabcf1214e',
-    greeting:'2026년 5월 16일(토) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'저희가 하나님의 성령이 거하시는 성전이요 그 성전은 거룩하다 하셨으니, 저희도 세상의 지혜로 자신을 속이거나 사람을 자랑하지 않고 스스로를 거룩하게 지키며 만물이 저희 것이요 저희는 그리스도의 것이요 그리스도는 하나님의 것임을 날마다 고백하며 살아가게 하옵소서.' },
-  { date:'2026-05-18', dow:'월', day:77, passage:'고전 4:9~21',   dn:138, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/hVCaqbJ6rA0', dramaUrl:'https://youtu.be/4NH4BdF_AoA', range:'요 1:1-12:50', notionUrl:'https://www.notion.so/31a5e604d8c680158126e42b93c2bf24',
-    greeting:'2026년 5월 18일(월) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 사도로서 세상의 구경거리가 되고 주리고 목마르고 헐벗고 매 맞으면서도 욕을 당하면 축복하고 핍박을 받으면 참고 비방을 받으면 권면하며 그리스도 안에서 자녀를 낳은 아버지의 마음으로 교회를 섬겼듯이, 저희도 말로만이 아니라 능력으로 십자가의 삶을 살아내며 사랑과 온유한 마음으로 맡겨주신 양 무리를 신실하게 섬기게 하옵소서.' },
-  { date:'2026-05-19', dow:'화', day:78, passage:'고전 5:1~13',   dn:139, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/Z_V5f7V32zc', dramaUrl:'https://youtu.be/ypNS7IBgYLQ', range:'요 13:1-21:25', notionUrl:'https://www.notion.so/31a5e604d8c680b0a7e4c9e06f4a50ec',
-    greeting:'2026년 5월 19일(화) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 고린도 교회 안에 드러난 음행을 묵인하는 교만을 책망하며 적은 누룩이 온 덩어리를 부풀린다 하고 유월절 양이신 그리스도께서 이미 희생되셨으니 교회가 거룩함과 진실함의 누룩 없는 떡으로 절기를 지키라 하였듯이, 저희도 세상의 악에 타협하거나 죄를 묵과하지 않고 그리스도의 피로 정결케 된 거룩한 공동체로서 순결하고 진실하게 살아가게 하옵소서.' },
-  { date:'2026-05-20', dow:'수', day:79, passage:'고전 6:1~11',   dn:140, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/xfapFScfez0', dramaUrl:'https://youtu.be/MLKCDsu1x0o', range:'행 1:1-11:18', notionUrl:'https://www.notion.so/31a5e604d8c680689d85c41b04593082',
-    greeting:'2026년 5월 20일(수) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 성도들이 세상 법정에서 서로 다투는 것을 책망하며 불의한 자가 하나님 나라를 유업으로 받지 못한다 경고하면서도 주 예수 그리스도의 이름과 우리 하나님의 성령 안에서 씻음과 거룩함과 의롭다 하심을 받았다고 선언하였듯이, 저희도 세상의 방식으로 다투고 서로 해하기보다 차라리 불의를 당하는 길을 택하며 우리를 의롭다 하신 그 은혜를 기억하고 서로를 용납하며 살아가게 하옵소서.' },
-  { date:'2026-05-21', dow:'목', day:80, passage:'고전 6:12~20',  dn:141, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/qNTGFaYWiO0', dramaUrl:'https://youtu.be/EKszrMsiM6M', range:'행 11:19-20:38', notionUrl:'https://www.notion.so/31a5e604d8c680558e0ac36d24cc925a',
-    greeting:'2026년 5월 21일(목) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'모든 것이 가하나 모든 것이 유익하지 않다 하시고 저희 몸이 음란을 위한 것이 아니라 주를 위한 것이며 값으로 사신 바 된 저희 몸이 성령의 전이요 하나님께 영광을 돌려야 할 처소라 하셨듯이, 저희도 자유를 방종의 기회로 삼지 않고 몸으로 하나님께 영광을 돌리며 주와 합하여 한 영이 된 자로서 거룩하고 정결한 삶을 살아가게 하옵소서.' },
-  { date:'2026-05-22', dow:'금', day:81, passage:'고전 7:1~16',   dn:142, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/ho4a2hXbst0', dramaUrl:'https://youtu.be/E7Gb9hEC1Aw', range:'행 21:1-28:31', notionUrl:'https://www.notion.so/31a5e604d8c680be961bde03c278158c',
-    greeting:'2026년 5월 22일(금) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 음행의 유혹이 가득한 세상 속에서 부부가 서로의 몸에 대한 의무를 다하고 믿지 않는 배우자와도 거룩한 언약을 지키며 살라 하였듯이, 저희도 혼인의 자리를 가볍게 여기지 않고 서로를 존중하며 하나님께서 맺어주신 언약을 신실하게 지켜 가정이 거룩함과 평화의 터전이 되게 하옵소서.' },
-  { date:'2026-05-23', dow:'토', day:82, passage:'고전 7:17~24',  dn:143, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/s8EqKiWtjws', dramaUrl:'https://youtu.be/uwadV3tpMRI', range:'롬 1:1-16:27', notionUrl:'https://www.notion.so/31a5e604d8c68030bf12d70cb1436143',
-    greeting:'2026년 5월 23일(토) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 각 사람은 주께서 나눠 주신 대로, 부르심을 받은 그 자리에서 그대로 행하라 하며 할례자든 무할례자든 종이든 자유인이든 부르심 받은 상태에 머물러 하나님과 함께 살라 하였듯이, 저희도 현재의 처지를 불만족스럽게 여기며 다른 자리를 탐내지 않고 지금 이 자리가 주께서 저희를 부르신 곳임을 믿으며 그 자리에서 신실하고 충성스럽게 살아가게 하옵소서.' },
-  { date:'2026-05-25', dow:'월', day:83, passage:'고전 8:1~13',   dn:145, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/_9RqBB5IuDU', dramaUrl:'https://youtu.be/JsgYB2qhChI', range:'고전 1:1-16:24', notionUrl:'https://www.notion.so/31a5e604d8c68049a383f83ce3a3a356',
-    greeting:'2026년 5월 25일(월) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 우상에게 바친 음식 문제에서 지식은 교만하게 하되 사랑은 덕을 세운다 하며 믿음이 강한 자가 자신의 자유를 내세우다가 약한 형제를 실족시키는 것은 그리스도께서 죽으신 형제를 죄 짓게 하는 것이라 경고하였듯이, 저희도 지식과 자유를 앞세우기보다 약한 형제를 돌아보는 사랑을 먼저 택하며 서로를 실족시키지 않고 덕을 세우는 공동체로 살아가게 하옵소서.' },
-  { date:'2026-05-26', dow:'화', day:84, passage:'고전 9:1~10',   dn:146, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/AINDdH47KX4', dramaUrl:'https://youtu.be/DdVac9ton74', range:'고후 1:1-13:13', notionUrl:'https://www.notion.so/31a5e604d8c680138fabda263afc04d7',
-    greeting:'2026년 5월 26일(화) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 사도로서 먹고 마실 권리와 재정적 지원을 받을 권리가 있음에도 복음을 위해 그 권리를 내려놓으며 씨 뿌리는 자가 소망을 가지고 거두기를 바라며 일하듯이 복음 사역자도 그 열매를 기대할 수 있다 하였듯이, 저희도 마땅히 누릴 권리를 내세우기보다 복음을 위해 기꺼이 내려놓는 자세로 맡겨주신 사역을 묵묵히 감당하게 하옵소서.' },
-  { date:'2026-05-27', dow:'수', day:85, passage:'고전 9:11~18',  dn:147, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/ZRUbgfasALo', dramaUrl:'https://youtu.be/QVIEFo8wOyQ', range:'갈 1:1 - 엡 6:24', notionUrl:'https://www.notion.so/31a5e604d8c6800fa35bcab3ee74e8f5',
-    greeting:'2026년 5월 27일(수) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 성전의 제사를 드리는 자들이 성전 것을 먹으며 살듯이 복음 전하는 자도 복음으로 살 권리가 있음에도 복음에 아무 거리낌이 없게 하려고 그 권리를 쓰지 않고 오직 복음을 값없이 전하는 것을 자신의 상으로 삼았듯이, 저희도 사역의 대가와 보상을 먼저 구하지 않고 복음을 위해 자원하는 마음으로 맡겨주신 사명을 기쁨으로 감당하게 하옵소서.' },
-  { date:'2026-05-28', dow:'목', day:86, passage:'고전 9:19~27',  dn:148, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/kd30LMZWI38', dramaUrl:'https://youtu.be/zIbcAu9CKZ0', range:'빌 1:1 - 살후 3:18', notionUrl:'https://www.notion.so/31a5e604d8c680cabd03d72b2d53f103',
-    greeting:'2026년 5월 28일(목) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 모든 사람에게 자유하나 스스로 모든 사람의 종이 되어 유대인에게는 유대인처럼, 약한 자에게는 약한 자처럼 되어 어떻게 해서든지 몇 사람이라도 구원하고자 하였으며 운동장에서 달리는 자들이 썩을 면류관을 위해 절제하듯이 썩지 않을 면류관을 위해 자기 몸을 쳐 복종시켰듯이, 저희도 복음을 위해 나를 내려놓고 잃어버린 영혼을 향해 달려가며 끝까지 자신을 절제하고 훈련하여 사명의 길에서 낙오되지 않게 하옵소서.' },
-  { date:'2026-05-29', dow:'금', day:87, passage:'고전 10:1~13',  dn:149, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/QIbp7T5bloc', dramaUrl:'https://youtu.be/yIZ9lQKqRec', range:'딤전 1:1 - 몬 1:25', notionUrl:'https://www.notion.so/31a5e604d8c680e38930d20385b968eb',
-    greeting:'2026년 5월 29일(금) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'이스라엘 백성이 구름과 바다에서 세례를 받고 같은 신령한 음식과 음료를 마셨으나 그 중 많은 사람이 음욕을 품고 우상을 숭배하며 주를 시험하다가 광야에서 쓰러졌으니 이것이 저희의 본보기가 되어 기록되었듯이, 저희도 은혜를 받았다는 자만으로 넘어질까 두려워하지 않고 오히려 조심하며 사람이 감당할 수 없는 시험을 허락하지 않으시고 피할 길을 내시는 하나님을 신뢰하여 끝까지 신실하게 서 있게 하옵소서.' },
-  { date:'2026-05-30', dow:'토', day:88, passage:'고전 10:14~22', dn:150, dawnUrl:PLAYLIST, readUrl:'https://youtu.be/Ols0xx6MPtA', dramaUrl:'https://youtu.be/zoi5Rc1DS8o', range:'히 1:1 - 약 5:20', notionUrl:'https://www.notion.so/31a5e604d8c68050a17ad27196bab1db',
-    greeting:'2026년 5월 30일(토) 90일성경통독과 새벽기도회를 보내드립니다. 말씀을 통해 충만한 은혜가 있기를 바랍니다.',
-    prayer:'바울이 우상 숭배를 피하라 경고하며 우리가 축사하는 잔은 그리스도의 피에 참여함이요 떼는 떡은 그리스도의 몸에 참여함이라 하고 주의 잔과 귀신의 잔을 함께 마실 수 없으며 주의 상과 귀신의 상에 함께 참여할 수 없다 하였듯이, 저희도 세상의 가치와 문화 속에서 우상과 타협하지 않고 오직 그리스도의 몸과 피에 참여한 자로서 주만을 섬기며 주의 질투를 일으키지 않는 거룩한 삶을 살아가게 하옵소서.' },
+// ── 큐티 본문 ─────────────────────────────────────
+const qtData = [
+  // 5월 (5/11~)
+  { date:'2026-05-11', dow:'월', passage:'고전 1:18~25', title:'십자가의 그리스도 하나님의 구원 능력' },
+  { date:'2026-05-12', dow:'화', passage:'고전 1:26~31', title:'부족한 자를 택하신 주님만 자랑하십시오' },
+  { date:'2026-05-13', dow:'수', passage:'고전 2:1~9',   title:'성령의 능력으로 전하는 하나님의 지혜' },
+  { date:'2026-05-14', dow:'목', passage:'고전 2:10~16', title:'성령의 교훈을 받는 성령의 사람' },
+  { date:'2026-05-15', dow:'금', passage:'고전 3:1~15',  title:'교회의 기초 예수 그리스도' },
+  { date:'2026-05-16', dow:'토', passage:'고전 3:16~23', title:'성령의 사람은 사람을 자랑하지 않습니다' },
+  { date:'2026-05-17', dow:'주', passage:'고전 4:1~8',   title:'' },
+  { date:'2026-05-18', dow:'월', passage:'고전 4:9~21',  title:'희생과 사랑으로 섬기는 영적 아버지' },
+  { date:'2026-05-19', dow:'화', passage:'고전 5:1~13',  title:'정결한 공동체를 위한 단호한 결단' },
+  { date:'2026-05-20', dow:'수', passage:'고전 6:1~11',  title:'성도 간의 문제는 교회 안에서 해결하십시오' },
+  { date:'2026-05-21', dow:'목', passage:'고전 6:12~20', title:'정결한 몸으로 하나님께 영광 돌리십시오' },
+  { date:'2026-05-22', dow:'금', passage:'고전 7:1~16',  title:'거룩함과 헌신을 단련하는 결혼' },
+  { date:'2026-05-23', dow:'토', passage:'고전 7:17~24', title:'변화된 정체성이 겉모습보다 중요합니다' },
+  { date:'2026-05-24', dow:'주', passage:'고전 7:25~40', title:'' },
+  { date:'2026-05-25', dow:'월', passage:'고전 8:1~13',  title:'연약한 자를 위해 절제하는 사랑' },
+  { date:'2026-05-26', dow:'화', passage:'고전 9:1~10',  title:'복음을 위한 권리 포기와 헌신' },
+  { date:'2026-05-27', dow:'수', passage:'고전 9:11~18', title:'자기 자랑이 없는 겸손한 사역자' },
+  { date:'2026-05-28', dow:'목', passage:'고전 9:19~27', title:'주님의 길을 따르는 복음의 종' },
+  { date:'2026-05-29', dow:'금', passage:'고전 10:1~13', title:'영적 자만을 버리고 교훈을 얻으십시오' },
+  { date:'2026-05-30', dow:'토', passage:'고전 10:14~22',title:'귀신과의 교제에 참여하는 일을 피하십시오' },
+  { date:'2026-05-31', dow:'주', passage:'고전 10:23~33',title:'' },
+  // 6월
+  { date:'2026-06-01', dow:'월', passage:'고전 11:1~16', title:'' },
+  { date:'2026-06-02', dow:'화', passage:'고전 11:17~26',title:'' },
+  { date:'2026-06-03', dow:'수', passage:'고전 11:27~34',title:'' },
+  { date:'2026-06-04', dow:'목', passage:'고전 12:1~11', title:'' },
+  { date:'2026-06-05', dow:'금', passage:'고전 12:12~20',title:'' },
+  { date:'2026-06-06', dow:'토', passage:'고전 12:21~31',title:'' },
+  { date:'2026-06-07', dow:'주', passage:'고전 13:1~7',  title:'' },
+  { date:'2026-06-08', dow:'월', passage:'고전 13:8~13', title:'' },
+  { date:'2026-06-09', dow:'화', passage:'고전 14:1~12', title:'' },
+  { date:'2026-06-10', dow:'수', passage:'고전 14:13~25',title:'' },
+  { date:'2026-06-11', dow:'목', passage:'고전 14:26~40',title:'' },
+  { date:'2026-06-12', dow:'금', passage:'고전 15:1~11', title:'' },
+  { date:'2026-06-13', dow:'토', passage:'고전 15:12~19',title:'' },
+  { date:'2026-06-14', dow:'주', passage:'고전 15:20~28',title:'' },
+  { date:'2026-06-15', dow:'월', passage:'고전 15:29~34',title:'' },
+  { date:'2026-06-16', dow:'화', passage:'고전 15:35~49',title:'' },
+  { date:'2026-06-17', dow:'수', passage:'고전 15:50~58',title:'' },
+  { date:'2026-06-18', dow:'목', passage:'고전 16:1~12', title:'' },
+  { date:'2026-06-19', dow:'금', passage:'고전 16:13~24',title:'' },
+  { date:'2026-06-20', dow:'토', passage:'욘 1:1~10',    title:'' },
+  { date:'2026-06-21', dow:'주', passage:'욘 1:11~16',   title:'' },
+  { date:'2026-06-22', dow:'월', passage:'욘 1:17~2:10', title:'' },
+  { date:'2026-06-23', dow:'화', passage:'욘 3:1~10',    title:'' },
+  { date:'2026-06-24', dow:'수', passage:'욘 4:1~11',    title:'' },
+  { date:'2026-06-25', dow:'목', passage:'나 1:1~8',     title:'' },
+  { date:'2026-06-26', dow:'금', passage:'나 1:9~15',    title:'' },
+  { date:'2026-06-27', dow:'토', passage:'나 2:1~7',     title:'' },
+  { date:'2026-06-28', dow:'주', passage:'나 2:8~13',    title:'' },
+  { date:'2026-06-29', dow:'월', passage:'나 3:1~11',    title:'' },
+  { date:'2026-06-30', dow:'화', passage:'나 3:12~19',   title:'' },
 ];
 
 // ── 한 주간 예배 담당자 (매주 자동 업데이트) ────
@@ -672,11 +621,11 @@ function goBack() {
 
 const TITLES = {
   home:'✝ 성민교회', sunday:'☀️ 주일예배', wednesday:'🕊 수요예배',
-  friday:'🔥 금요성령집회', qt:'📖 매일의 향기', leaders:'👥 한 주간 담당자', detail:'',
+  friday:'🔥 금요성령집회', qt:'📖 큐티 본문', leaders:'👥 한 주간 담당자', detail:'',
 };
 const SUBS = {
-  home:'매일의 향기', sunday:'요한복음 강해', wednesday:'SBA 성서학 과정3',
-  friday:'사무엘상 강해', qt:'큐티 · 90일 성경통독', leaders:'이번 주 예배 담당자', detail:'',
+  home:'큐티 본문', sunday:'요한복음 강해', wednesday:'SBA 성서학 과정3',
+  friday:'사무엘상 강해', qt:'5월 · 6월 큐티 일정', leaders:'이번 주 예배 담당자', detail:'',
 };
 
 function updateHeader(id) {
@@ -710,7 +659,7 @@ const renderers = {
   wednesday: renderWednesday,
   friday:    renderFriday,
   leaders:   renderLeaders,
-  qt:        initQT,
+  qt:        renderQT,
 };
 
 // ── SUNDAY ────────────────────────────────────
@@ -911,107 +860,36 @@ function showDetail(type, idx) {
 }
 
 // ── QT ────────────────────────────────────────
-const qtMap = {};
-devotionals.forEach(d => { qtMap[d.date] = d; });
-let qtSel = todayStr;
-if (!qtMap[qtSel]) {
-  const past = devotionals.filter(d => d.date <= todayStr);
-  qtSel = past.length ? past[past.length-1].date : devotionals[0].date;
-}
-
-function buildQTCal() {
-  const cal = document.getElementById('qtCal');
-  cal.innerHTML = '';
-  for (let day = 1; day <= 31; day++) {
-    const ds = `2026-05-${String(day).padStart(2,'0')}`;
-    const dt = new Date(ds);
-    if (dt.getMonth() !== 4) continue;
-    const hasEntry = !!qtMap[ds];
-    const isSun = dt.getDay() === 0;
-    const isToday = ds === todayStr;
-    const isSel = ds === qtSel;
-    const el = document.createElement('div');
-    el.className = 'cal-day' +
-      (hasEntry ? '' : ' no-entry') +
-      (isSel ? ' selected' : '') +
-      (isToday ? ' today-mark' : '');
-    el.innerHTML = `
-      <span class="c-dow" style="${isSun?'color:var(--qt-light)':''}">"${KDOW[dt.getDay()]}</span>
-      <span class="c-num">${day}</span>
-      ${hasEntry ? '<span class="c-dot"></span>' : '<span class="c-dot" style="opacity:0"></span>'}`;
-    if (hasEntry) el.onclick = () => { qtSel = ds; buildQTCal(); renderQTCard(); updateQTNav(); };
-    cal.appendChild(el);
-  }
-  const sel = cal.querySelector('.selected');
-  if (sel && document.getElementById('s-qt').classList.contains('active')) sel.scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
-}
-
-function qtNav(dir) {
-  const dates = devotionals.map(d => d.date);
-  const idx = dates.indexOf(qtSel) + dir;
-  if (idx >= 0 && idx < dates.length) { qtSel = dates[idx]; buildQTCal(); renderQTCard(); updateQTNav(); }
-}
-
-function updateQTNav() {
-  const dates = devotionals.map(d => d.date);
-  const idx = dates.indexOf(qtSel);
-  document.getElementById('qtPrev').disabled = idx <= 0;
-  document.getElementById('qtNext').disabled = idx >= dates.length - 1;
-  const d = qtMap[qtSel];
-  if (d) document.getElementById('qtNavLbl').textContent = `${parseInt(qtSel.slice(8))}일 (${d.dow}) · ${d.day}일차`;
-}
-
-function renderQTCard() {
-  const area = document.getElementById('qtCard');
-  const d = qtMap[qtSel];
-  const dayNum = parseInt(qtSel.slice(8));
-  if (!d) {
-    area.innerHTML = `
-      <div class="qt-sunday-card">
-        <div class="sc-icon">⛪</div>
-        <div class="sc-title">주일입니다</div>
-        <div class="sc-text">오늘 ${dayNum}일은 주일입니다.<br>온 마음으로 주일 예배를 드리세요 🙏</div>
-      </div>`;
-    return;
-  }
-  area.innerHTML = `
-    <div class="qt-card">
-      <div class="qt-card-head">
-        <div class="qc-date">🌸 2026년 5월 ${dayNum}일 ${d.dow}요일</div>
-        <div class="qc-title">오늘의 매일의 향기</div>
-        <div class="qc-badges">
-          <span class="qc-badge bible">📖 ${d.passage}</span>
-          <span class="qc-badge day">🕐 ${d.day}일차 · 통독 ${d.dn}장</span>
-        </div>
+function renderQT() {
+  const rows = qtData.map(d => {
+    const isSun = d.dow === '주';
+    const past = d.date < todayStr;
+    const isToday = d.date === todayStr;
+    const dm = parseInt(d.date.slice(5,7));
+    const dd = parseInt(d.date.slice(8));
+    return `<div class="svc-item${past && !isToday ? ' is-past' : ''}${isToday ? ' is-now' : ''}" style="${isToday ? 'border-color:var(--qt)' : ''}">
+      <div class="svc-date">
+        <div class="s-m">${dm}월</div>
+        <div class="s-d qt-color">${dd}</div>
+        <div class="s-w" style="${isSun ? 'color:var(--qt-light)' : ''}">${d.dow}</div>
       </div>
-      <div class="qt-card-body">
-        <div class="qt-greeting"><strong>✝ 매일의 향기</strong><br>${d.greeting}</div>
-        <div class="sec-label" style="margin-bottom:8px">📜 오늘의 기도</div>
-        <div class="qt-prayer-box"><p class="qt-prayer-text">${d.prayer}</p></div>
-        <div class="sec-label" style="margin-bottom:8px">🎬 오늘의 영상</div>
-        <div class="qt-links">
-          <a href="${d.dawnUrl}" target="_blank" class="qt-link dawn">
-            <span class="l-icon">🌅</span>
-            <div class="l-info"><span class="l-lbl">새벽기도회</span><span class="l-sub">성민교회 유튜브 재생목록</span></div>
-            <span class="l-arr">›</span>
-          </a>
-          <a href="${d.readUrl}" target="_blank" class="qt-link reading">
-            <span class="l-icon">📗</span>
-            <div class="l-info"><span class="l-lbl">90일 성경통독</span><span class="l-sub">${d.range}</span></div>
-            <span class="l-arr">›</span>
-          </a>
-          <a href="${d.dramaUrl}" target="_blank" class="qt-link drama">
-            <span class="l-icon">🎧</span>
-            <div class="l-info"><span class="l-lbl">드라마바이블</span><span class="l-sub">낭독 음원으로 듣기</span></div>
-            <span class="l-arr">›</span>
-          </a>
-          <a href="${d.notionUrl}" target="_blank" class="qt-link notion">
-            <span class="l-icon">📋</span>
-            <div class="l-info"><span class="l-lbl">노션에서 원본 보기</span><span class="l-sub">성민교회 노션 워크스페이스</span></div>
-            <span class="l-arr">›</span>
-          </a>
-        </div>
+      <div class="svc-body">
+        <div class="svc-title">${d.passage}${isToday ? '<span class="now-badge" style="background:var(--qt-bg);color:var(--qt)">오늘</span>' : ''}</div>
+        ${d.title ? `<div class="svc-passage">${d.title}</div>` : ''}
       </div>
+    </div>`;
+  }).join('');
+  document.getElementById('s-qt').innerHTML = `
+    <div class="list-wrap">
+      <div class="list-head">
+        <span class="list-icon">📖</span>
+        <h2 class="qt-color">큐티 본문</h2>
+        <div class="list-desc">5월 · 6월 큐티 본문과 제목</div>
+      </div>
+      <div class="theme-box" style="border-color:var(--qt)">
+        📖 <strong>고린도전서</strong> (5월) · <strong>요나서 · 나훔서</strong> (6월)
+      </div>
+      ${rows}
     </div>`;
 }
 
@@ -1092,12 +970,6 @@ function renderLeaders() {
 // ══════════════════════════════════════════════
 //  INIT
 // ══════════════════════════════════════════════
-
-function initQT() {
-  buildQTCal();
-  renderQTCard();
-  updateQTNav();
-}
 
 function init() {
   const today = new Date();

@@ -420,8 +420,8 @@
           <div class="menu-card card-qt" onclick="goTo('qt')">
             <span class="m-icon">📖</span>
             <div class="m-title">큐티 본문</div>
-            <div class="m-desc">매일 큐티 본문과 제목<br>5월 · 6월 한달치</div>
-            <span class="m-badge">큐티 · 고린도전서</span>
+            <div class="m-desc">매일 큐티 본문과 제목<br>5 · 6 · 7월</div>
+            <span class="m-badge">큐티 · 5~7월</span>
           </div>
           <div class="menu-card card-ldr full" onclick="goTo('leaders')">
             <span class="m-icon">👥</span>
@@ -497,10 +497,10 @@ const sundayData = [
 
 // ── 수요예배 ──────────────────────────────────
 const wednesdayData = [
-  { date:'2026-05-13', lec:10, subject:'히브리서 · 야고보서',        preacher:'노태규 목사', worship:'최명환', sound:'윤수신', pd:'박정인' },
-  { date:'2026-05-20', lec:11, subject:'베드로전서',                 preacher:'윤수신 목사', worship:'정지원', sound:'노태규', pd:'최명환' },
-  { date:'2026-05-27', lec:12, subject:'베드로후서 · 유다서',        preacher:'윤수신 목사', worship:'노태규', sound:'정지원', pd:'박정인' },
-  { date:'2026-06-03', lec:13, subject:'요한일 · 이 · 삼서',        preacher:'노태규 목사', worship:'윤수신', sound:'최명환', pd:'정지원' },
+  { date:'2026-05-13', lec:10, subject:'히브리서 · 야고보서',        preacher:'노태규', worship:'최명환', sound:'윤수신', pd:'박정인' },
+  { date:'2026-05-20', lec:11, subject:'베드로전서',                 preacher:'윤수신', worship:'정지원', sound:'노태규', pd:'최명환' },
+  { date:'2026-05-27', lec:12, subject:'베드로후서 · 유다서',        preacher:'윤수신', worship:'노태규', sound:'정지원', pd:'박정인' },
+  { date:'2026-06-03', lec:13, subject:'요한일 · 이 · 삼서',        preacher:'노태규', worship:'윤수신', sound:'최명환', pd:'정지원' },
   { date:'2026-06-10', lec:14, subject:'요한계시록 1',               preacher:'이해영 담임목사', worship:'윤수신', sound:'박정인', pd:'노태규' },
   { date:'2026-06-17', lec:15, subject:'요한계시록 2',               preacher:'이해영 담임목사', worship:'박정인', sound:'윤수신', pd:'최명환' },
 ];
@@ -571,6 +571,38 @@ const qtData = [
   { date:'2026-06-28', dow:'주', passage:'나 2:8~13',    title:'' },
   { date:'2026-06-29', dow:'월', passage:'나 3:1~11',    title:'' },
   { date:'2026-06-30', dow:'화', passage:'나 3:12~19',   title:'' },
+  // 7월
+  { date:'2026-07-01', dow:'수', passage:'시 107:1~22',    title:'' },
+  { date:'2026-07-02', dow:'목', passage:'시 107:23~43',   title:'' },
+  { date:'2026-07-03', dow:'금', passage:'시 108:1~13',    title:'' },
+  { date:'2026-07-04', dow:'토', passage:'시 109:1~16',    title:'' },
+  { date:'2026-07-05', dow:'주', passage:'시 109:17~31',   title:'' },
+  { date:'2026-07-06', dow:'월', passage:'시 110:1~7',     title:'' },
+  { date:'2026-07-07', dow:'화', passage:'시 111:1~10',    title:'' },
+  { date:'2026-07-08', dow:'수', passage:'시 112:1~10',    title:'' },
+  { date:'2026-07-09', dow:'목', passage:'시 113:1~9',     title:'' },
+  { date:'2026-07-10', dow:'금', passage:'시 114:1~8',     title:'' },
+  { date:'2026-07-11', dow:'토', passage:'시 115:1~8',     title:'' },
+  { date:'2026-07-12', dow:'주', passage:'시 115:9~18',    title:'' },
+  { date:'2026-07-13', dow:'월', passage:'시 116:1~19',    title:'' },
+  { date:'2026-07-14', dow:'화', passage:'시 117:1~118:7', title:'' },
+  { date:'2026-07-15', dow:'수', passage:'시 118:8~29',    title:'' },
+  { date:'2026-07-16', dow:'목', passage:'겔 25:1~11',     title:'' },
+  { date:'2026-07-17', dow:'금', passage:'겔 25:12~17',    title:'' },
+  { date:'2026-07-18', dow:'토', passage:'겔 26:1~21',     title:'' },
+  { date:'2026-07-19', dow:'주', passage:'겔 27:1~25',     title:'' },
+  { date:'2026-07-20', dow:'월', passage:'겔 27:26~36',    title:'' },
+  { date:'2026-07-21', dow:'화', passage:'겔 28:1~19',     title:'' },
+  { date:'2026-07-22', dow:'수', passage:'겔 28:20~26',    title:'' },
+  { date:'2026-07-23', dow:'목', passage:'겔 29:1~16',     title:'' },
+  { date:'2026-07-24', dow:'금', passage:'겔 29:17~30:9',  title:'' },
+  { date:'2026-07-25', dow:'토', passage:'겔 30:10~26',    title:'' },
+  { date:'2026-07-26', dow:'주', passage:'겔 31:1~18',     title:'' },
+  { date:'2026-07-27', dow:'월', passage:'겔 32:1~16',     title:'' },
+  { date:'2026-07-28', dow:'화', passage:'겔 32:17~32',    title:'' },
+  { date:'2026-07-29', dow:'수', passage:'겔 33:1~9',      title:'' },
+  { date:'2026-07-30', dow:'목', passage:'겔 33:10~20',    title:'' },
+  { date:'2026-07-31', dow:'금', passage:'겔 33:21~33',    title:'' },
 ];
 
 // ── 한 주간 예배 담당자 (매주 자동 업데이트) ────
@@ -578,7 +610,7 @@ const qtData = [
 const leadersData = {
   week: '5/11 — 5/16',
   dawn: {
-    preacher: ['윤수신 목사','윤수신 목사','담임목사님','담임목사님','박정인 목사','박정인 목사'],
+    preacher: ['윤수신','윤수신','담임목사님','담임목사님','박정인','박정인'],
     caption:  ['최명환 목사','최명환 목사','최명환 목사','노태규 목사','노태규 목사','노태규 목사'],
     accomp:   ['김진희','최우진','사모님','김진희','사모님','최우진'],
   },
@@ -884,10 +916,10 @@ function renderQT() {
       <div class="list-head">
         <span class="list-icon">📖</span>
         <h2 class="qt-color">큐티 본문</h2>
-        <div class="list-desc">5월 · 6월 큐티 본문과 제목</div>
+        <div class="list-desc">5 · 6 · 7월 큐티 본문과 제목</div>
       </div>
       <div class="theme-box" style="border-color:var(--qt)">
-        📖 <strong>고린도전서</strong> (5월) · <strong>요나서 · 나훔서</strong> (6월)
+        📖 <strong>고린도전서</strong> (5·6월) · <strong>시편 · 에스겔</strong> (7월)
       </div>
       ${rows}
     </div>`;

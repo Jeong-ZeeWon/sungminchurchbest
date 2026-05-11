@@ -33,6 +33,6 @@ jobs:
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add worship.html
+          git add worship.html index.html
           git diff --staged --quiet || git commit -m "자동 업데이트: $(TZ=Asia/Seoul date +'%Y-%m-%d') 한 주간 예배 담당자"
           git push

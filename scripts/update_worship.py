@@ -299,3 +299,39 @@ with open("worship.html", "w", encoding="utf-8") as f:
 
 print(f"✅ worship.html 업데이트 완료 ({updated})")
 print(f"   새벽: {s.month}/{s.day}-{e.day}, 수요: {wed_label}, 금요: {fri_label}")
+
+# ── index.html leadersData 업데이트 ─────────────
+fri_prayer_list = fri["기도용사"] if isinstance(fri["기도용사"], list) else fri["기도용사"].split()
+
+preacher_js = ",".join(f"'{v}'" for v in dawn_raw["설교"])
+caption_js  = ",".join(f"'{v}'" for v in dawn_raw["자막"])
+accomp_js   = ",".join(f"'{v}'" for v in dawn_raw["반주"])
+prayer_js   = ",".join(f"'{p}'" for p in fri_prayer_list)
+
+week_label  = f"{s.month}/{s.day} — {e.month}/{e.day}"
+
+new_leaders = f"""const leadersData = {{
+  week: '{week_label}',
+  dawn: {{
+    preacher: [{preacher_js}],
+    caption:  [{caption_js}],
+    accomp:   [{accomp_js}],
+  }},
+  days: ['월','화','수','목','금','토'],
+  wed: {{ date:'{wed_label}', preacher:'{wed["설교"]}', worship:'{wed["찬양"]}', sound:'{wed["음향"]}', pd:'{wed["PD"]}' }},
+  fri: {{ date:'{fri_label}(금)', worship:'{fri["찬양"]}', pd:'{fri["PD"]}', caption:'{fri["자막"]}', prayer:[{prayer_js}] }},
+}};"""
+
+START = "// LEADERS_DATA_START\n"
+END   = "\n// LEADERS_DATA_END"
+try:
+    with open("index.html", "r", encoding="utf-8") as f:
+        idx_html = f.read()
+    s_pos = idx_html.index(START) + len(START)
+    e_pos = idx_html.index(END, s_pos)
+    idx_html = idx_html[:s_pos] + new_leaders + idx_html[e_pos:]
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(idx_html)
+    print(f"✅ index.html leadersData 업데이트 완료")
+except Exception as ex:
+    print(f"⚠️  index.html 업데이트 실패: {ex}")

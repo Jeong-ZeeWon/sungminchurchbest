@@ -757,8 +757,8 @@ const SUBS = {
 function updateHeader(id) {
   const isHome = !stack.length || id === 'home';
   document.getElementById('backBtn').classList.toggle('visible', !isHome);
-  document.getElementById('hTitle').textContent = TITLES[id] || '✝ 성민교회';
-  document.getElementById('hSub').textContent   = SUBS[id]   || '';
+  document.getElementById('hTitle').textContent = TITLES[id] ?? '';
+  document.getElementById('hSub').textContent   = SUBS[id]   ?? '';
 }
 
 // ══════════════════════════════════════════════

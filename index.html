@@ -311,51 +311,91 @@
     .qt-sunday-card .sc-text { font-size: 13px; color: var(--text-soft); line-height: 1.8; }
 
     /* ── LEADERS SCREEN ── */
-    .ldr-wrap { padding: 20px 16px 36px; max-width: 500px; margin: 0 auto; }
-    .ldr-head { margin-bottom: 16px; }
-    .ldr-week-badge {
-      display: inline-block; background: var(--ldr); color: white;
-      font-size: 10px; font-weight: 700; padding: 4px 12px;
-      border-radius: 20px; margin-bottom: 10px; letter-spacing: .5px;
+    .ldr2-wrap { padding: 16px 14px 36px; max-width: 600px; margin: 0 auto; }
+    .ldr2-date-row { display: flex; justify-content: center; margin-bottom: 16px; }
+    .ldr2-date-sticker {
+      background: #FFFAED; border: 2px solid #F5C842; color: #3A2E26;
+      font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 20px;
+      box-shadow: 2px 3px 0 rgba(245,200,66,.3);
     }
-    .ldr-head h2 { font-family: 'Noto Serif KR', serif; font-size: 20px; font-weight: 700; margin-bottom: 3px; }
-    .ldr-head .ldr-sub { font-size: 12px; color: var(--text-soft); }
-    .ldr-section { background: var(--white); border-radius: var(--radius-sm); box-shadow: var(--shadow); margin-bottom: 12px; overflow: hidden; }
-    .ldr-sec-head {
-      padding: 12px 16px 10px; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 8px;
+    .ldr2-card {
+      background: var(--white); border-radius: 22px; padding: 18px 16px; margin-bottom: 12px;
+      box-shadow: 0 6px 24px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
     }
-    .ldr-sec-head .sh-icon { font-size: 20px; }
-    .ldr-sec-head .sh-title { font-size: 14px; font-weight: 700; }
-    .ldr-sec-head .sh-date { font-size: 11px; color: var(--text-soft); margin-left: auto; }
-    .ldr-sec-body { padding: 10px 16px 14px; }
-    .ldr-row {
-      display: flex; align-items: flex-start; justify-content: space-between;
-      padding: 7px 0; border-bottom: 1px dashed var(--border);
+    .ldr2-sec-head { display: flex; align-items: center; gap: 11px; margin-bottom: 14px; }
+    .ldr2-sec-icon {
+      width: 42px; height: 42px; border-radius: 13px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0; box-shadow: 2px 4px 8px rgba(0,0,0,.10);
     }
-    .ldr-row:last-child { border-bottom: none; }
-    .lr-role { font-size: 11px; color: var(--text-soft); min-width: 52px; padding-top: 1px; }
-    .lr-val { font-size: 13px; font-weight: 600; text-align: right; flex: 1; }
-    .ldr-tags { display: flex; flex-wrap: wrap; gap: 5px; justify-content: flex-end; }
-    .ldr-tag {
-      padding: 3px 9px; border-radius: 14px; font-size: 11px; font-weight: 600;
-      background: var(--ldr-bg); color: var(--ldr); border: 1px solid var(--ldr-light);
+    .ldr2-sec-icon.green { background: #EAF6EB; }
+    .ldr2-sec-title { font-size: 15px; font-weight: 700; }
+    .ldr2-sec-badge {
+      margin-left: auto; font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px; box-shadow: 1px 2px 0 rgba(0,0,0,.07);
     }
-    .ldr-dawn-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-    .ldr-dawn-table th {
-      background: var(--ldr); color: white; padding: 7px 4px;
-      text-align: center; font-weight: 600; font-size: 11px;
+    .ldr2-sec-badge.green { background: #EAF6EB; border: 1.5px solid #77C17E; color: #388E3C; }
+    .ldr2-dawn-table { width: 100%; border-collapse: separate; border-spacing: 0 5px; font-size: 11px; }
+    .ldr2-dawn-table thead th {
+      text-align: center; font-size: 9.5px; font-weight: 700; color: #9E8E80; padding: 0 2px 6px;
     }
-    .ldr-dawn-table td { padding: 7px 4px; text-align: center; border-bottom: 1px solid var(--border); }
-    .ldr-dawn-table tr:last-child td { border-bottom: none; }
-    .ldr-dawn-table tr:nth-child(even) td { background: var(--ldr-bg); }
-    .ldr-dawn-table .role-cell { font-size: 10px; font-weight: 700; color: var(--text-soft); background: #F5F5F5 !important; }
-    .ldr-link-btn {
-      display: flex; align-items: center; justify-content: center; gap: 8px;
-      width: 100%; padding: 14px; background: var(--ldr); color: white;
-      border-radius: var(--radius-sm); font-size: 14px; font-weight: 700;
-      text-decoration: none; margin-top: 4px;
-      -webkit-tap-highlight-color: transparent;
+    .ldr2-dawn-table thead th small { display: block; font-size: 9px; font-weight: 400; margin-top: 1px; }
+    .ldr2-dawn-table tbody td {
+      padding: 7px 2px; text-align: center; background: #FAFAF8;
+      border-top: 1.5px solid #E6DDD4; border-bottom: 1.5px solid #E6DDD4;
+    }
+    .ldr2-dawn-table tbody td:first-child {
+      border-left: 1.5px solid #E6DDD4; border-radius: 10px 0 0 10px; padding-left: 7px;
+    }
+    .ldr2-dawn-table tbody td:last-child {
+      border-right: 1.5px solid #E6DDD4; border-radius: 0 10px 10px 0; padding-right: 5px;
+    }
+    .ldr2-row-label { font-size: 9.5px; font-weight: 700; color: #9E8E80; white-space: nowrap; }
+    .ldr2-chip {
+      display: inline-block; padding: 3px 6px; border-radius: 9px;
+      font-size: 10px; font-weight: 700; line-height: 1.4; box-shadow: 1px 2px 0 rgba(0,0,0,.08);
+    }
+    .ldr2-chip-pastor { background: #FDEDF0; border: 1.5px solid #F2889A; color: #C2185B; }
+    .ldr2-chip-sermon { background: #FFFAED; border: 1.5px solid #F5C842; color: #C77800; }
+    .ldr2-chip-sub    { background: #F0EDFA; border: 1.5px solid #9B8EC4; color: #512DA8; }
+    .ldr2-chip-plain  { background: #F5F3F0; border: 1.5px solid #DDD8D0; color: #5A4E44; }
+    .ldr2-divider { text-align: center; font-size: 18px; letter-spacing: 10px; margin: 6px 0; opacity: .55; user-select: none; }
+    .ldr2-worship-grid { display: flex; gap: 10px; }
+    .ldr2-worship-card {
+      flex: 1; background: var(--white); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 6px 24px rgba(0,0,0,.06), 0 1px 3px rgba(0,0,0,.04);
+    }
+    .ldr2-worship-head { padding: 12px 12px 10px; }
+    .ldr2-worship-head.wed { background: linear-gradient(140deg,#EAF4FC,#F3F8FF); border-bottom: 2px dashed #BEE0F8; }
+    .ldr2-worship-head.fri { background: linear-gradient(140deg,#FFF8E8,#FFFDF5); border-bottom: 2px dashed #FFDFAA; }
+    .ldr2-worship-icon { font-size: 24px; margin-bottom: 4px; }
+    .ldr2-worship-title { font-size: 13px; font-weight: 700; }
+    .ldr2-worship-date  { font-size: 10px; color: #9E8E80; margin-top: 2px; }
+    .ldr2-worship-body { padding: 8px 10px; }
+    .ldr2-role-row { display: flex; align-items: center; gap: 7px; padding: 5px 0; border-bottom: 1.5px dashed #F0EDE8; }
+    .ldr2-role-row:last-child { border-bottom: none; }
+    .ldr2-role-tag {
+      font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 7px;
+      background: #FFF3E0; border: 1.5px solid #FFCC80; color: #E65100;
+      white-space: nowrap; flex-shrink: 0; box-shadow: 1px 2px 0 rgba(230,81,0,.12);
+    }
+    .ldr2-role-val { font-size: 13px; font-weight: 700; }
+    .ldr2-prayer-box {
+      margin: 0 10px 10px; background: #FFFAED; border: 2px dashed #F5C842;
+      border-radius: 12px; padding: 8px 10px;
+    }
+    .ldr2-prayer-title { font-size: 10px; font-weight: 700; color: #C77800; margin-bottom: 6px; }
+    .ldr2-prayer-title::before { content: '🙏 '; }
+    .ldr2-prayer-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+    .ldr2-prayer-tag {
+      background: var(--white); border: 1.5px solid #F5C842; color: #3A2E26;
+      font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 20px;
+      box-shadow: 1px 2px 0 rgba(245,200,66,.25);
+    }
+    .ldr2-footer {
+      text-align: center; margin-top: 8px; padding: 14px; background: var(--white);
+      border-radius: 16px; font-size: 10.5px; color: #9E8E80;
+      box-shadow: 0 4px 16px rgba(0,0,0,.04); line-height: 1.9;
     }
 
     /* ── COLORS APPLIED ── */
@@ -928,71 +968,107 @@ function renderQT() {
 // ── LEADERS ───────────────────────────────────
 function renderLeaders() {
   const L = leadersData;
-  const dayHeaders = L.days.map(d => `<th>${d}</th>`).join('');
-  const pRow  = L.dawn.preacher.map(v => `<td>${v}</td>`).join('');
-  const cRow  = L.dawn.caption.map(v  => `<td>${v}</td>`).join('');
-  const aRow  = L.dawn.accomp.map(v   => `<td>${v}</td>`).join('');
-  const pTags = L.fri.prayer.map(p =>
-    `<span class="ldr-tag">${p}</span>`
-  ).join('');
+
+  // Parse week start/end dates from "M/D — M/D"
+  const parts = L.week.split(' — ');
+  const [sm, sd] = parts[0].split('/').map(Number);
+  const [em, ed] = parts[1].split('/').map(Number);
+  const year = new Date().getFullYear();
+  const startDate = new Date(year, sm - 1, sd);
+
+  function chipP(name) {
+    const cls = name === '목사님' ? 'ldr2-chip-pastor' : 'ldr2-chip-sermon';
+    return `<span class="ldr2-chip ${cls}">${name}</span>`;
+  }
+
+  const dayHeaders = L.days.map((d, i) => {
+    const dt = new Date(startDate); dt.setDate(sd + i);
+    return `<th>${d}<small>${dt.getDate()}일</small></th>`;
+  }).join('');
+
+  const pRow = L.dawn.preacher.map(v => `<td>${chipP(v)}</td>`).join('');
+  const cRow = L.dawn.caption.map(v => `<td><span class="ldr2-chip ldr2-chip-sub">${v}</span></td>`).join('');
+  const aRow = L.dawn.accomp.map(v => `<td><span class="ldr2-chip ldr2-chip-plain">${v}</span></td>`).join('');
+  const pTags = L.fri.prayer.map(p => `<span class="ldr2-prayer-tag">${p}</span>`).join('');
+
+  const dateLabel = sm === em
+    ? `${year}년 ${sm}월 ${sd}일 — ${ed}일`
+    : `${year}년 ${sm}월 ${sd}일 — ${em}월 ${ed}일`;
 
   document.getElementById('s-leaders').innerHTML = `
-    <div class="ldr-wrap">
-      <div class="ldr-head">
-        <div class="ldr-week-badge">📅 ${L.week}</div>
-        <h2 class="ldr-color">한 주간 예배 담당자</h2>
-        <div class="ldr-sub">이번 주 예배를 함께 섬기는 분들입니다</div>
+    <div class="ldr2-wrap">
+      <div class="ldr2-date-row">
+        <span class="ldr2-date-sticker">🗓 ${dateLabel}</span>
       </div>
 
-      <div class="ldr-section">
-        <div class="ldr-sec-head">
-          <span class="sh-icon">🌅</span>
-          <span class="sh-title">새벽기도회</span>
-          <span class="sh-date">${L.week}</span>
+      <div class="ldr2-card">
+        <div class="ldr2-sec-head">
+          <div class="ldr2-sec-icon green">🌅</div>
+          <span class="ldr2-sec-title">새벽기도회 담당</span>
+          <span class="ldr2-sec-badge green">${L.week}</span>
         </div>
-        <div class="ldr-sec-body" style="padding:0">
-          <table class="ldr-dawn-table">
-            <thead><tr><th style="width:44px">역할</th>${dayHeaders}</tr></thead>
-            <tbody>
-              <tr><td class="role-cell">설교</td>${pRow}</tr>
-              <tr><td class="role-cell">자막</td>${cRow}</tr>
-              <tr><td class="role-cell">반주</td>${aRow}</tr>
-            </tbody>
-          </table>
-        </div>
+        <table class="ldr2-dawn-table">
+          <thead>
+            <tr>
+              <th style="width:34px"></th>
+              ${dayHeaders}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="ldr2-row-label">설교</span></td>
+              ${pRow}
+            </tr>
+            <tr>
+              <td><span class="ldr2-row-label">자막</span></td>
+              ${cRow}
+            </tr>
+            <tr>
+              <td><span class="ldr2-row-label">반주</span></td>
+              ${aRow}
+            </tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="ldr-section">
-        <div class="ldr-sec-head">
-          <span class="sh-icon">🕊</span>
-          <span class="sh-title">수요예배</span>
-          <span class="sh-date">${L.wed.date}</span>
-        </div>
-        <div class="ldr-sec-body">
-          <div class="ldr-row"><span class="lr-role">설교</span><span class="lr-val">${L.wed.preacher}</span></div>
-          <div class="ldr-row"><span class="lr-role">찬양</span><span class="lr-val">${L.wed.worship}</span></div>
-          <div class="ldr-row"><span class="lr-role">음향</span><span class="lr-val">${L.wed.sound}</span></div>
-          <div class="ldr-row"><span class="lr-role">PD</span><span class="lr-val">${L.wed.pd}</span></div>
-        </div>
-      </div>
+      <div class="ldr2-divider">🍃 🌿 🍃</div>
 
-      <div class="ldr-section">
-        <div class="ldr-sec-head">
-          <span class="sh-icon">🔥</span>
-          <span class="sh-title">금요성령집회</span>
-          <span class="sh-date">${L.fri.date}</span>
+      <div class="ldr2-worship-grid">
+        <div class="ldr2-worship-card">
+          <div class="ldr2-worship-head wed">
+            <div class="ldr2-worship-icon">🕊️</div>
+            <div class="ldr2-worship-title">수요예배</div>
+            <div class="ldr2-worship-date">${L.wed.date}</div>
+          </div>
+          <div class="ldr2-worship-body">
+            <div class="ldr2-role-row"><span class="ldr2-role-tag">설교</span><span class="ldr2-role-val">${L.wed.preacher}</span></div>
+            <div class="ldr2-role-row"><span class="ldr2-role-tag">찬양</span><span class="ldr2-role-val">${L.wed.worship}</span></div>
+            <div class="ldr2-role-row"><span class="ldr2-role-tag">음향</span><span class="ldr2-role-val">${L.wed.sound}</span></div>
+            <div class="ldr2-role-row"><span class="ldr2-role-tag">PD</span><span class="ldr2-role-val">${L.wed.pd}</span></div>
+          </div>
         </div>
-        <div class="ldr-sec-body">
-          <div class="ldr-row"><span class="lr-role">찬양</span><span class="lr-val">${L.fri.worship}</span></div>
-          <div class="ldr-row"><span class="lr-role">PD</span><span class="lr-val">${L.fri.pd}</span></div>
-          <div class="ldr-row"><span class="lr-role">자막</span><span class="lr-val">${L.fri.caption}</span></div>
-          <div class="ldr-row">
-            <span class="lr-role">기도용사</span>
-            <div class="ldr-tags">${pTags}</div>
+
+        <div class="ldr2-worship-card">
+          <div class="ldr2-worship-head fri">
+            <div class="ldr2-worship-icon">🔥</div>
+            <div class="ldr2-worship-title">금요성령집회</div>
+            <div class="ldr2-worship-date">${L.fri.date}</div>
+          </div>
+          <div class="ldr2-worship-body">
+            <div class="ldr2-role-row"><span class="ldr2-role-tag">찬양</span><span class="ldr2-role-val">${L.fri.worship}</span></div>
+            <div class="ldr2-role-row"><span class="ldr2-role-tag">PD</span><span class="ldr2-role-val">${L.fri.pd}</span></div>
+            <div class="ldr2-role-row"><span class="ldr2-role-tag">자막</span><span class="ldr2-role-val">${L.fri.caption}</span></div>
+          </div>
+          <div class="ldr2-prayer-box">
+            <div class="ldr2-prayer-title">기도용사</div>
+            <div class="ldr2-prayer-tags">${pTags}</div>
           </div>
         </div>
       </div>
 
+      <div class="ldr2-footer">
+        사랑과 은혜가 넘치는 공동체<br>은혜로운 한 주간 되세요 🌸
+      </div>
     </div>`;
 }
 

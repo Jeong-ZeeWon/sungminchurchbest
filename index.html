@@ -89,12 +89,12 @@
     .menu-card {
       background: var(--white); border-radius: var(--radius);
       box-shadow: var(--shadow); padding: 18px 15px 16px;
-      cursor: pointer; transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .14s;
+      cursor: pointer; transition: transform .65s cubic-bezier(.34,2,.64,1), box-shadow .2s;
       border: 2px solid transparent;
       -webkit-tap-highlight-color: transparent;
       text-align: left; position: relative; overflow: hidden;
     }
-    .menu-card:active { transform: scale(.94); transition: transform .1s, box-shadow .1s; }
+    .menu-card:active { transform: scale(.86); box-shadow: 0 1px 4px rgba(0,0,0,.06); transition: transform .08s, box-shadow .08s; }
     .menu-card.full { grid-column: 1 / -1; }
     .menu-card .m-icon { font-size: 30px; margin-bottom: 9px; display: block; }
     .menu-card .m-title { font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
@@ -136,11 +136,11 @@
       box-shadow: var(--shadow); margin-bottom: 9px;
       padding: 14px 15px; cursor: pointer;
       display: flex; align-items: center; gap: 13px;
-      transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+      transition: transform .55s cubic-bezier(.34,1.8,.64,1);
       -webkit-tap-highlight-color: transparent;
       position: relative; overflow: hidden;
     }
-    .svc-item:active { transform: scale(.97); transition: transform .1s; }
+    .svc-item:active { transform: scale(.95); transition: transform .08s; }
     .svc-item.is-now { border-left: 4px solid; }
     .svc-item.is-past { opacity: .6; }
     .svc-date { text-align: center; min-width: 42px; }
@@ -409,18 +409,18 @@
     /* ── RIPPLE ── */
     .ripple-wave {
       position: absolute; border-radius: 50%; pointer-events: none;
-      transform: scale(0); background: rgba(0,0,0,.09);
-      animation: ripple-anim .55s cubic-bezier(.4,0,.2,1) forwards;
+      transform: scale(0); background: rgba(0,0,0,.13);
+      animation: ripple-anim .65s cubic-bezier(.2,0,.6,1) forwards;
     }
-    @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
+    @keyframes ripple-anim { to { transform: scale(6); opacity: 0; } }
 
     /* ── STAGGER ── */
     .stagger-in {
-      animation: staggerUp .34s cubic-bezier(.4,0,.2,1) backwards;
+      animation: staggerUp .52s cubic-bezier(.34,1.5,.64,1) backwards;
     }
     @keyframes staggerUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(44px) scale(.88); }
+      to   { opacity: 1; transform: translateY(0)   scale(1);  }
     }
 
     @media (max-width: 360px) {
@@ -703,7 +703,7 @@ function attachRipple(container) {
 
 function stagger(container) {
   container.querySelectorAll('.svc-item, .ldr2-card, .ldr2-worship-card').forEach((el, i) => {
-    el.style.animationDelay = `${i * 55}ms`;
+    el.style.animationDelay = `${i * 75}ms`;
     el.classList.add('stagger-in');
   });
 }
@@ -1139,7 +1139,7 @@ function init() {
 
   // Home screen stagger + ripple
   document.querySelectorAll('.menu-grid .menu-card').forEach((el, i) => {
-    el.style.animationDelay = `${80 + i * 70}ms`;
+    el.style.animationDelay = `${60 + i * 90}ms`;
     el.classList.add('stagger-in');
   });
   attachRipple(document.getElementById('s-home'));

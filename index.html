@@ -89,12 +89,12 @@
     .menu-card {
       background: var(--white); border-radius: var(--radius);
       box-shadow: var(--shadow); padding: 18px 15px 16px;
-      cursor: pointer; transition: transform .14s, box-shadow .14s;
+      cursor: pointer; transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .14s;
       border: 2px solid transparent;
       -webkit-tap-highlight-color: transparent;
-      text-align: left;
+      text-align: left; position: relative; overflow: hidden;
     }
-    .menu-card:active { transform: scale(.96); box-shadow: var(--shadow); }
+    .menu-card:active { transform: scale(.94); transition: transform .1s, box-shadow .1s; }
     .menu-card.full { grid-column: 1 / -1; }
     .menu-card .m-icon { font-size: 30px; margin-bottom: 9px; display: block; }
     .menu-card .m-title { font-family: 'Noto Serif KR', serif; font-size: 15px; font-weight: 700; margin-bottom: 4px; }
@@ -136,10 +136,11 @@
       box-shadow: var(--shadow); margin-bottom: 9px;
       padding: 14px 15px; cursor: pointer;
       display: flex; align-items: center; gap: 13px;
-      transition: transform .13s;
+      transition: transform .4s cubic-bezier(.34,1.56,.64,1);
       -webkit-tap-highlight-color: transparent;
+      position: relative; overflow: hidden;
     }
-    .svc-item:active { transform: scale(.98); }
+    .svc-item:active { transform: scale(.97); transition: transform .1s; }
     .svc-item.is-now { border-left: 4px solid; }
     .svc-item.is-past { opacity: .6; }
     .svc-date { text-align: center; min-width: 42px; }
@@ -405,6 +406,23 @@
     .qt-color   { color: var(--qt); }
     .ldr-color  { color: var(--ldr); }
 
+    /* ── RIPPLE ── */
+    .ripple-wave {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      transform: scale(0); background: rgba(0,0,0,.09);
+      animation: ripple-anim .55s cubic-bezier(.4,0,.2,1) forwards;
+    }
+    @keyframes ripple-anim { to { transform: scale(4); opacity: 0; } }
+
+    /* ── STAGGER ── */
+    .stagger-in {
+      animation: staggerUp .34s cubic-bezier(.4,0,.2,1) backwards;
+    }
+    @keyframes staggerUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
     @media (max-width: 360px) {
       .menu-grid { gap: 9px; }
       .menu-card { padding: 15px 12px; }
@@ -661,6 +679,42 @@ const leadersData = {
 // LEADERS_DATA_END
 
 // ══════════════════════════════════════════════
+//  EFFECTS
+// ══════════════════════════════════════════════
+
+function ripple(e) {
+  const el = e.currentTarget;
+  const rect = el.getBoundingClientRect();
+  const size = Math.max(rect.width, rect.height) * 2;
+  const t = e.touches ? e.touches[0] : e;
+  const wave = document.createElement('span');
+  wave.className = 'ripple-wave';
+  wave.style.cssText = `width:${size}px;height:${size}px;left:${t.clientX - rect.left - size/2}px;top:${t.clientY - rect.top - size/2}px`;
+  el.appendChild(wave);
+  wave.addEventListener('animationend', () => wave.remove(), { once: true });
+}
+
+function attachRipple(container) {
+  container.querySelectorAll('.menu-card, .svc-item').forEach(el => {
+    el.addEventListener('touchstart', ripple, { passive: true });
+    el.addEventListener('mousedown', ripple);
+  });
+}
+
+function stagger(container) {
+  container.querySelectorAll('.svc-item, .ldr2-card, .ldr2-worship-card').forEach((el, i) => {
+    el.style.animationDelay = `${i * 55}ms`;
+    el.classList.add('stagger-in');
+  });
+}
+
+function postRender(id) {
+  const el = document.getElementById('s-' + id);
+  stagger(el);
+  attachRipple(el);
+}
+
+// ══════════════════════════════════════════════
 //  NAVIGATION
 // ══════════════════════════════════════════════
 
@@ -679,7 +733,7 @@ function goTo(id) {
 
   // Render on first visit
   const fn = renderers[id];
-  if (fn && !nextEl.dataset.rendered) { fn(); nextEl.dataset.rendered = '1'; }
+  if (fn && !nextEl.dataset.rendered) { fn(); nextEl.dataset.rendered = '1'; postRender(id); }
 }
 
 function goBack() {
@@ -1082,6 +1136,13 @@ function init() {
   const d = today.getDate();
   const dow = KDOW[today.getDay()];
   document.getElementById('heroDate').textContent = `${today.getFullYear()}년 ${m}월 ${d}일 (${dow})`;
+
+  // Home screen stagger + ripple
+  document.querySelectorAll('.menu-grid .menu-card').forEach((el, i) => {
+    el.style.animationDelay = `${80 + i * 70}ms`;
+    el.classList.add('stagger-in');
+  });
+  attachRipple(document.getElementById('s-home'));
 }
 
 init();

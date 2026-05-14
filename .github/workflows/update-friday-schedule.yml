@@ -106,3 +106,5 @@ jobs:
           git add index.html .github/workflows/update-friday-schedule.yml
           git diff --staged --quiet || git commit -m "금요성령집회 일정 조정"
           git push
+
+# trigger: 2026-05-14-1

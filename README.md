@@ -5,8 +5,7 @@
 원본은 Notion의 `📜 여러 종류 프롬프트` 페이지이며, 이 저장소는 해당 프롬프트 모음을 앱·자동화·AI 작업에서 안정적으로 불러오기 위한 GitHub 버전입니다.
 
 - Notion 원본: https://www.notion.so/2e05e604d8c6816b8355f9b7c004c32e
-- 현재 GitHub 저장소: `Jeong-ZeeWon/sungminchurch`
-- 권장 저장소명: `prompt` 또는 `prompts`
+- 현재 GitHub 저장소: `Jeong-ZeeWon/prompts`
 
 ## 이 저장소의 목적
 
@@ -37,10 +36,6 @@ categories/
   prayer-and-pastoral-index.md
 prompts/
   sermon-recommendation.md
-  representative-prayer.md
-  funeral-sermon.md
-  funeral-prayer.md
-  friday-prayer-meeting.md
   sermon-diagnosis.md
   pastoral-plan.md
   cell-leader-training.md
@@ -61,7 +56,7 @@ templates/
 프롬프트 파일을 앱에서 불러올 때는 Raw URL을 사용합니다.
 
 ```text
-https://raw.githubusercontent.com/Jeong-ZeeWon/sungminchurch/main/prompts/sermon-recommendation.md
+https://raw.githubusercontent.com/Jeong-ZeeWon/prompts/main/prompts/sermon-recommendation.md
 ```
 
 ### 3. Notion과 함께 사용
